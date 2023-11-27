@@ -1,0 +1,65 @@
+/* profil.component.scss */
+body{
+    margin: 0;
+}
+
+button{
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #D5D8DC ;
+    cursor:pointer;
+    border: none;
+}
+
+button:hover{
+    background-color: #ABB2B9 ;
+    transition: all 0.3s ease-in-out;
+}
+
+hr{
+    width: 700px;
+}
+
+.profile-container {
+    text-align: center;
+}
+
+.profile{
+    margin: auto;
+    margin-top: 50px;
+    max-width: 400px;
+}
+
+.photo-profil, .profile-info, .button-modif{
+    margin: 10px;
+    display: inline-block;
+}
+
+.photo-profil{
+    max-width: 80px;
+    vertical-align: bottom; /* Aligne le bas des éléments sur la même ligne */
+}
+
+.profile-info{
+    text-align: left;
+}
+
+.profile-picture {
+    width: 100%;
+    margin-right: 10px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.button-modif{
+    vertical-align: 49px;
+}
+
+.bio{
+    text-align: left;
+    margin-left: 45px;
+}
+
+.button-deco{
+    margin-top: 20px;
+}
