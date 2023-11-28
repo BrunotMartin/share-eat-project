@@ -1,0 +1,30 @@
+hr{
+  background-color: #EA4334;
+}
+
+.mat-toolbar {
+  text-align: center;
+  background-color: #EA4334;
+}
+  
+.logo {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.menu-content {
+  background: linear-gradient(to bottom, #EA4334, #FBB337); /* Dégradé de rouge à jaune */
+  height: 100vh; /* La hauteur de la vue moins la hauteur de la barre d'outils */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+  
+.mat-list-item {
+  color: white; /* Couleur du texte pour les liens */
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+  
