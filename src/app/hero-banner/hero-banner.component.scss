@@ -1,16 +1,16 @@
 #hero-banner{
   background-color: aqua;  
-  background-image: url("../../assets/images/fondVitrineflou2.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    color: #fff; /* Couleur du texte */
-    text-align: center;
-    height: 100vh; /* Occupe 100% de la hauteur de la vue (viewport) */
-    width: 100%; /* Occupe 100% de la largeur de son conteneur */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  //background-image: url("../../assets/images/fondVitrineflou2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #fff; /* Couleur du texte */
+  text-align: center;
+  height: 100vh; /* Occupe 100% de la hauteur de la vue (viewport) */
+  width: 100%; /* Occupe 100% de la largeur de son conteneur */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 
