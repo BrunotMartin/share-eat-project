@@ -1,0 +1,48 @@
+#recette-container{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(128, 128, 192);
+    border-radius: 10px;
+}
+
+#titre-recette{
+    font-size: 25px;
+    font-weight:bolder;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: white;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+#like-container{
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+}
+
+#note-container{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+@media only screen and (max-width: 768px) {
+    #titre-recette{
+        font-size: 20px;
+        top: 10px;
+        left: 10px;
+    }
+
+    #like-container{
+        bottom: 10px;
+        left: 10px;
+    }
+    
+    #note-container{
+        bottom: 10px;
+        right: 10px;
+    }
+  
+}

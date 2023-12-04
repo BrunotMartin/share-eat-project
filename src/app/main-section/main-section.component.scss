@@ -11,17 +11,18 @@
     align-items: center;
     text-align: center;
     width: 100%;
+    min-width: 215px;
 }
 
 p{
-    font-size: 45px;
-   
+    font-size: 40px;
+    white-space: nowrap;
     margin: 55px 0 25px 0;
     font-weight: 800;
 }
 
 hr{
-    width: 15%;
+    width: 20%;
 }
 
 #hr2{
@@ -29,4 +30,45 @@ hr{
     margin-top: 50px;
     border: 1px solid rgba(255,45,45,1);
     width: 100%;
+}
+
+#recettes{
+    margin-top: 40px;
+    height: 100%;
+    width: auto;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+app-recette{
+    height: 400px;
+    width: 250px;
+    margin: 20px 20px 20px 20px ;
+}
+
+@media only screen and (max-width: 768px) {
+    p{
+        font-size: 16px;
+        
+        margin: 20px 0 10px 0;
+        font-weight: 800;
+    }
+
+    #hr2{
+        opacity: 0.75;
+        margin-top: 15px;
+        border: 1px solid rgba(255,45,45,1);
+        width: 100%;
+    }
+
+    #recettes{
+        margin-top: 15px;
+    }
+
+    app-recette{
+        height: 275px;
+        width: 175px;
+        margin: 15px 15px 15px 15px ;
+    }
 }

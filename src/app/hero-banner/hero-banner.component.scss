@@ -1,6 +1,6 @@
 #hero-banner{
   background-color: aqua;  
-  //background-image: url("../../assets/images/fondVitrineflou2.png");
+  background-image: url("../../assets/images/fondVitrineflou2.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -20,7 +20,18 @@
 
 
 .image-container > #logo-vitrine {
-  //z-index: 999;
-  width: 25%;
+  width: 28%;
   height: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .image-container > #logo-vitrine {
+    width: 60%;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .image-container > #logo-vitrine {
+    width: 45%;
+  }
 }

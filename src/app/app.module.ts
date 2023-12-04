@@ -7,9 +7,10 @@ import { HeroBannerComponent } from './hero-banner/hero-banner.component';
 import { MenuComponent } from './menu/menu.component';
 import { MainSectionComponent } from './main-section/main-section.component';
 import { FooterComponent } from './footer/footer.component';
+import { RecetteComponent } from './recette/recette.component';
 
 @NgModule({
-  declarations: [AppComponent, HeroBannerComponent, MenuComponent, MainSectionComponent, FooterComponent],
+  declarations: [AppComponent, HeroBannerComponent, MenuComponent, MainSectionComponent, FooterComponent, RecetteComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
