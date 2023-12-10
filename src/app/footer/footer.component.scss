@@ -1,4 +1,19 @@
-#footer{
-    background-color: cadetblue;
-    height: 400px;
+.footer p{
+    color: gray;
+    display: inline;
+    margin: 0 10px;
+}
+.footer{
+    padding-top: 25px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-top: 1px solid gray;
+    
+}
+.footerdiv{
+    border-bottom: 1px solid gray;
+    padding-bottom: 25px;
 }
