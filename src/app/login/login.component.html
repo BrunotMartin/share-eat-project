@@ -4,7 +4,7 @@
 
     <div class="form">
         <p class="connexion">CONNEXION</p>
-        <form>
+        <form (ngSubmit)="onSubmit()">
             <table>
                 <tr>
                     <td></td>
@@ -12,7 +12,7 @@
                 </tr>
                 <tr>
                     <td><img width="30" height="30" src="assets/svg/icone mail.svg" alt="Description de l'image SVG"></td>
-                    <td><input type="email" id="email" name="email" class="email"><br></td>
+                    <td><input type="email" id="email" name="email" class="email" [(ngModel)]="user.email" ><br></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -21,15 +21,15 @@
                 </tr>
                 <tr>
                     <td><img width="30" height="30" src="assets/svg/icone mdp.svg" alt="Description de l'image SVG"></td>
-                    <td><input id="mdp" name="mdp" class="mdp"><br></td>
+                    <td><input id="mdp" name="mdp" class="mdp" [(ngModel)]="user.password"><br></td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input type="submit" value=" Connexion" class="buttonConnexion"></td>
+                    <td><input type="submit" value="Connexion" class="buttonConnexion"></td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td><p>Vous n'avez pas encore de compte<br> ShareEat ? <strong class="Sinscrire">S'inscrire</strong></p></td>
+                    <td><p>Vous n'avez pas encore de compte<br> ShareEat ? <strong class="Sinscrire"><a routerLink="/inscription">S'inscrire</a></strong></p></td>
                 </tr>
             </table>
         </form>
