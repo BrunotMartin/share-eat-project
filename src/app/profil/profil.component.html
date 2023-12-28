@@ -1,24 +1,29 @@
-<!-- profil.component.html -->
-<div class="profile-container">
-  <div class="profile">
-    <div class="photo-profil">
-      <img src="assets/img/profil.jpg" alt="Photo de profil" class="profile-picture">
+<div id="grid-container">
+
+  <app-menu id="c1"></app-menu>
+  <!-- profil.component.html -->
+  <div id="c2 "class="profile-container">
+    <div class="profile">
+      <div class="photo-profil">
+        <img src="assets/img/profil.jpg" alt="Photo de profil" class="profile-picture">
+      </div>
+      <div class="profile-info">
+        <h2>{{prenom}}</h2>
+        <p>{{identifiant}}</p>
+      </div>
+      <div class="button-modif">
+        <button class="modify-button" (click)="modifierProfil()">Modifier le profil</button>
+      </div>
+      <div class="bio">
+        <p>{{biographie}}</p>
+        <!-- Ajoute un formulaire pour modifier la biographie ici -->
+      </div>
     </div>
-    <div class="profile-info">
-      <h2>{{prenom}}</h2>
-      <p>{{identifiant}}</p>
-    </div>
-    <div class="button-modif">
-      <button class="modify-button" (click)="modifierProfil()">Modifier le profil</button>
-    </div>
-    <div class="bio">
-      <p>{{biographie}}</p>
-      <!-- Ajoute un formulaire pour modifier la biographie ici -->
+    <hr>
+    <!-- Ajoute la classe bottom-separator ici -->
+    <div class="button-deco">
+      <button (click)="deconnexion()">Déconnexion</button>
     </div>
   </div>
-  <hr>
-  <!-- Ajoute la classe bottom-separator ici -->
-  <div class="button-deco">
-    <button (click)="deconnexion()">Déconnexion</button>
-  </div>
+
 </div>
