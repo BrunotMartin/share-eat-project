@@ -1,7 +1,6 @@
 #main-section{
     width: 100%;
-    height: 2000px;
-
+    height: 1700px;
 }
 
 #titre{
@@ -14,7 +13,7 @@
     min-width: 215px;
 }
 
-p{
+#titre > p{
     font-size: 40px;
     white-space: nowrap;
     margin: 55px 0 25px 0;
@@ -41,15 +40,70 @@ hr{
     flex-wrap: wrap;
 }
 
-app-recette{
+#recette-container{
+    position: relative;
     height: 400px;
     width: 250px;
     margin: 20px 20px 20px 20px ;
+    background-color: rgb(128, 128, 192);
+    border-radius: 10px;
 }
 
+#titre-recette{
+    font-size: 25px;
+    font-weight:bolder;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: white;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+#like-container{
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+}
+
+#note-container{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+// app-recette{
+//     height: 400px;
+//     width: 250px;
+//     margin: 20px 20px 20px 20px ;
+// }
+
 @media only screen and (max-width: 768px) {
-    p{
-        font-size: 16px;
+    #recette-container{
+        height: 300px;
+        width: 200px;
+    }
+
+    #titre-recette{
+        font-size: 20px;
+        top: 10px;
+        left: 10px;
+    }
+
+    #like-container{
+        bottom: 10px;
+        left: 10px;
+    }
+    
+    #note-container{
+        bottom: 10px;
+        right: 10px;
+    }
+  
+}
+
+
+@media only screen and (max-width: 768px) {
+    #titre > p{
+        font-size: 18px;
         
         margin: 20px 0 10px 0;
         font-weight: 800;

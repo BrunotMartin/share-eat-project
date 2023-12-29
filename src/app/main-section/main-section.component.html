@@ -10,13 +10,21 @@
     
     <div id="recettes">
         <!--Faire la boucle pour mettre le bon nombre de composant recette-->
+        <!-- <app-recette></app-recette>
         <app-recette></app-recette>
         <app-recette></app-recette>
         <app-recette></app-recette>
         <app-recette></app-recette>
         <app-recette></app-recette>
-        <app-recette></app-recette>
-        <app-recette></app-recette>
+        <app-recette></app-recette> -->
+        <div  *ngFor="let recette of recetteList">
+            <div id="recette-container">
+                <p id="titre-recette">{{recette.titre}}</p>
+            
+                <div id="like-container">❤️</div>
+                <div id="note-container">⭐⭐⭐</div>
+            </div>
+        </div>
     </div>
     
 

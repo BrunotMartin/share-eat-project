@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RECETTES } from '../mock-recette';
+import { Recette } from '../recette';
 
 @Component({
   selector: 'app-main-section',
@@ -7,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class MainSectionComponent {
 
+  recetteList: Recette[] = RECETTES;
+
+  ngOnInit(){
+    console.table(this.recetteList);
+  }
 }
