@@ -17,8 +17,8 @@
         <app-recette></app-recette>
         <app-recette></app-recette>
         <app-recette></app-recette> -->
-        <div  *ngFor="let recette of recetteList">
-            <div id="recette-container">
+        <div *ngFor="let recette of recetteList">
+            <div (click)="goToRecette(recette)" id="recette-container">
                 <p id="titre-recette">{{recette.titre}}</p>
             
                 <div id="like-container">❤️</div>

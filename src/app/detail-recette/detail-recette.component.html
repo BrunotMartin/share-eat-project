@@ -1,0 +1,20 @@
+<div id="parent-container">
+    <div id="container" *ngIf="recette">
+        <div id="detail-recette">
+            <h1>Fiche descriptive</h1>
+            <h2>{{recette.titre}}</h2>
+            <h3>Description :</h3>
+            <p>{{recette.description}}</p>
+            <p>Publiée par : {{recette.idUtilisateur}}</p>
+            <p>{{recette.imageRecette}}</p>
+        </div>
+        <div id="retour-container" (click)="goToAccueil()">
+            <a>Retour</a>
+        </div>
+    </div>
+    <div *ngIf="!recette">
+        <p>Aucune recette n'a été trouvée !</p>
+        <a routerLink="/accueil">Retourner à l'accueil</a>
+    </div>
+</div>
+
