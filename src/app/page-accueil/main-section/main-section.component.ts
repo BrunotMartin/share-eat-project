@@ -12,11 +12,21 @@ import { Recette } from '../recette';
 export class MainSectionComponent {
 
   recetteList: Recette[] = RECETTES;
-
+  
+  pageSize = 12; // Nombre d'éléments par page
+  p = 1; // Page actuelle
   // ngOnInit(){
   //   console.table(this.recetteList);
   // }
-
+  customLabels = {
+    previousLabel: 'Précédent',
+    nextLabel: 'Suivant',
+    screenReaderPaginationLabel: 'Pagination',
+    screenReaderPageLabel: 'page',
+    screenReaderCurrentLabel: 'Vous êtes sur la page'
+    // Ajoutez d'autres textes personnalisés si nécessaire
+  };
+  
   constructor(private router: Router){  }
 
   goToRecette(recette: Recette){

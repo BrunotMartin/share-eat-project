@@ -1,8 +1,56 @@
 #grille {
     display: grid;
-    grid-template-rows: 100vh 55fr 10fr;
+    grid-template-rows: 100vh 50fr 5fr;
     grid-template-columns: 0.45fr 1fr 1fr 1fr;
-    height: 3400px; /* Hauteur totale de la grille, ajustez selon vos besoins */
+    height: 2900px; /* Hauteur totale de la grille, ajustez selon vos besoins */
+}
+
+@media only screen and (max-width: 1720px) {
+    #grille {
+        height: 2880px; /* Hauteur totale de la grille, ajustez selon vos besoins */
+    }
+}
+
+@media only screen and (max-width: 1471px) {
+    #grille {
+        height: 3200px; /* Hauteur totale de la grille, ajustez selon vos besoins */
+    }
+}
+
+@media only screen and (max-width: 1161px) {
+    #grille {
+        height: 4150px; /* Hauteur totale de la grille, ajustez selon vos besoins */
+    }
+}
+
+@media only screen and (max-width: 851px) {
+    #grille {
+        height: 3500px; /* Hauteur totale de la grille, ajustez selon vos besoins */
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #grille {
+        height: 3350px; /* Hauteur totale de la grille, ajustez selon vos besoins */
+    }
+}
+
+@media only screen and (max-width: 673px) {
+    #grille {
+        height: 2950px; /* Hauteur totale de la grille, ajustez selon vos besoins */
+    }
+}
+
+@media only screen and (max-width: 476px) {
+    #grille {
+        height: 2950px; /* Hauteur totale de la grille, ajustez selon vos besoins */
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    #grille {
+        height: 2550px; /* Hauteur totale de la grille, ajustez selon vos besoins */
+    }
 }
 
 #c1{

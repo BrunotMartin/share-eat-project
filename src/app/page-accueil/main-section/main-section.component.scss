@@ -1,6 +1,6 @@
 #main-section{
     width: 100%;
-    height: 1700px;
+    height: 1500px;
 }
 
 #titre{
@@ -42,9 +42,9 @@ hr{
 
 #recette-container{
     position: relative;
-    height: 400px;
-    width: 250px;
-    margin: 20px 20px 20px 20px ;
+    height: 420px;
+    width: 270px;
+    margin: 20px 50px 20px 50px ;
     background-color: rgb(128, 128, 192);
     border-radius: 10px;
     cursor: pointer;
@@ -77,12 +77,110 @@ hr{
 //     margin: 20px 20px 20px 20px ;
 // }
 
-@media only screen and (max-width: 768px) {
+#pagination-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+//responsive main-section
+
+@media only screen and (max-width: 1720px) {
+    #recette-container{
+        height: 400px;
+        width: 250px;
+        margin: 20px 30px 20px 30px ;
+    }
+    #pagination-container{
+        position: relative;
+        bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 1471px) {
+    #pagination-container{
+        position: relative;
+        bottom: -280px;
+    }
+}
+
+@media only screen and (max-width: 1161px) {
+    #pagination-container{
+        position: relative;
+        bottom: -1160px;
+    }
+}
+
+@media only screen and (max-width: 851px) {
     #recette-container{
         height: 300px;
         width: 200px;
     }
 
+    #pagination-container{
+        position: relative;
+        bottom: -560px;
+    }
+}
+
+@media only screen and (max-width: 673px) {
+    #recette-container{
+        height: 240px;
+        width: 155px;
+        margin: 20px 10px 20px 10px ;
+    }
+
+    #pagination-container{
+        position: relative;
+        bottom: -200px;
+    }
+}
+
+@media only screen and (max-width: 503px) {
+    #recette-container{
+        height: 240px;
+        width: 150px;
+        margin: 20px 10px 20px 10px ;
+    }
+
+    #pagination-container{
+        position: relative;
+        bottom: -200px;
+    }
+}
+
+@media only screen and (max-width: 476px) {
+    #recette-container{
+        height: 240px;
+        width: 140px;
+        margin: 20px 5px 20px 5px ;
+    }
+}
+
+@media only screen and (max-width: 436px) {
+    #recette-container{
+        height: 180px;
+        width: 100px;
+        margin: 20px 1px 20px 1px ;
+    }
+    
+    #pagination-container{
+        position: relative;
+        bottom: -60px;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    #pagination-container{
+        font-size: 12px;
+        position: relative;
+        bottom: -20px;
+    }
+}
+
+//responsive des elements dans recettes
+
+@media only screen and (max-width: 768px) {
     #titre-recette{
         font-size: 20px;
         top: 10px;
@@ -101,6 +199,16 @@ hr{
   
 }
 
+@media only screen and (max-width: 436px) {
+    #titre-recette{
+        font-size: 15px;
+        top: 10px;
+        left: 10px;
+    }
+    
+}
+
+//responsive titre main section et conteneur recettes
 
 @media only screen and (max-width: 768px) {
     #titre > p{
@@ -121,9 +229,9 @@ hr{
         margin-top: 15px;
     }
 
-    app-recette{
-        height: 275px;
-        width: 175px;
-        margin: 15px 15px 15px 15px ;
-    }
+    // app-recette{
+    //     height: 275px;
+    //     width: 175px;
+    //     margin: 15px 15px 15px 15px ;
+    // }
 }

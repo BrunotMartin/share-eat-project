@@ -17,7 +17,7 @@
         <app-recette></app-recette>
         <app-recette></app-recette>
         <app-recette></app-recette> -->
-        <div *ngFor="let recette of recetteList">
+        <div *ngFor="let recette of recetteList | paginate: { itemsPerPage: pageSize, currentPage: p }">
             <div (click)="goToRecette(recette)" id="recette-container">
                 <p id="titre-recette">{{recette.titre}}</p>
             
@@ -27,5 +27,14 @@
         </div>
     </div>
     
+    <div id="pagination-container">
+        <pagination-controls (pageChange)="p = $event" 
+        previousLabel="Précédent"
+        nextLabel="Suivant"
+        screenReaderPaginationLabel="Pagination"
+        screenReaderPageLabel="page"
+        screenReaderCurrentLabel="Vous êtes sur la page">
+        </pagination-controls>
+    </div>
 
 </div>
