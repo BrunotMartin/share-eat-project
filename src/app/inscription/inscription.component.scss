@@ -1,5 +1,6 @@
 .text{
     margin-bottom: 110px;
+    margin-left: 24px;
     font-weight:bold;
     font-size: 30px;
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
@@ -27,8 +28,11 @@
     padding-right: 10px;
     margin-left: -100px;
 }
+.chef{
+    margin-right: 50px;
+}
 
-.buttonConnexion{
+.buttonInscription{
     font-weight: bold;
     background-color: #FBB337;
     border: none;
@@ -54,26 +58,27 @@
     border-radius: 5px;
     padding-right: 60px;
 }
+.nom{
+    background-color: #f9e0de;
+    border: none;
+    border-bottom: 1px solid #EA4334;
+    border-radius: 5px;
+    padding-right: 60px;
+}
+.prenom{
+    background-color: #f9e0de;
+    border: none;
+    border-bottom: 1px solid #EA4334;
+    border-radius: 5px;
+    padding-right: 60px;
+}
 
-.Sinscrire{
+.SeConnecter{
     text-decoration: underline;
 
 }
 .bol{
     position: fixed;
-    padding-left: 330px;
+    padding-left: 322px;
     margin-top: -220px;
-}
-// Media queries pour rendre la page responsive
-@media screen and (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-    .form {
-        margin-left: 0;
-    }
-    .bol {
-        padding-left: 0;
-        margin-top: 0;
-    }
 }

@@ -5,10 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, FooterComponent],
+  declarations: [AppComponent, LoginComponent, FooterComponent, InscriptionComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
