@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {RECETTES} from '../mock-recette'
+//import {RECETTES} from '../mock-recette'
 import { Recette } from '../recette';
+import { RecetteService } from '../recette.service';
 
 
 @Component({
@@ -14,14 +15,17 @@ export class DetailRecetteComponent {
   recetteList: Recette[] | undefined;
   recette: Recette | undefined;
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private router: Router,
+    private recetteService: RecetteService) { }
 
   ngOnInit(){
-    this.recetteList = RECETTES;
+    //this.recetteList = RECETTES;
     const recetteId: string|null = this.route.snapshot.paramMap.get('id');
    
     if(recetteId){
-      this.recette = this.recetteList.find(recette => recette.idRecette == +recetteId);
+      this.recette = this.recetteService.getRecetteById(+recetteId);
     }
     
   }

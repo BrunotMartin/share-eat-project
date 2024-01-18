@@ -18,7 +18,7 @@
         <app-recette></app-recette>
         <app-recette></app-recette> -->
         <div *ngFor="let recette of recetteList | paginate: { itemsPerPage: pageSize, currentPage: p }">
-            <div (click)="goToRecette(recette)" id="recette-container">
+            <div (click)="openModal(recette)" id="recette-container">
                 <p id="titre-recette">{{recette.titre}}</p>
             
                 <div id="like-container">❤️</div>
@@ -27,6 +27,20 @@
         </div>
     </div>
     
+    <!-- Fenêtre contextuelle -->
+    <div *ngIf="selectedRecette">
+        <div id="modal-container">
+            <div id="modal">
+                <p id="titre-recette">{{ selectedRecette.titre }}</p>
+                <p id="nom-utilisateur">Publié par {{ selectedRecette.idUtilisateur }}</p>
+                <!-- Affichez d'autres détails de la recette selon vos besoins -->
+                <button id="fermer" (click)="closeModal()">Fermer</button>
+                <button id="en-savoir-plus" (click)="goToRecette(selectedRecette)">En savoir plus</button>
+            </div>
+        </div>
+
+    </div>
+
     <div id="pagination-container">
         <pagination-controls (pageChange)="p = $event" 
         previousLabel="Précédent"

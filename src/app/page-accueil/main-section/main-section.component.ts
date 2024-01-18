@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RECETTES } from '../mock-recette';
 import { Recette } from '../recette';
+import { RecetteService } from '../recette.service';
 
 
 @Component({
@@ -9,15 +10,18 @@ import { Recette } from '../recette';
   templateUrl: './main-section.component.html',
   styleUrls: ['./main-section.component.scss']
 })
-export class MainSectionComponent {
+export class MainSectionComponent implements OnInit{
 
-  recetteList: Recette[] = RECETTES;
+  recetteList: Recette[] = []; // = RECETTES;
   
   pageSize = 12; // Nombre d'éléments par page
   p = 1; // Page actuelle
   // ngOnInit(){
   //   console.table(this.recetteList);
   // }
+
+  
+
   customLabels = {
     previousLabel: 'Précédent',
     nextLabel: 'Suivant',
@@ -27,7 +31,26 @@ export class MainSectionComponent {
     // Ajoutez d'autres textes personnalisés si nécessaire
   };
   
-  constructor(private router: Router){  }
+  selectedRecette: any;
+  
+
+  openModal(recette: any) {
+    this.selectedRecette = recette;
+  }
+
+  closeModal() {
+    this.selectedRecette = null;
+  }
+
+
+  constructor(
+    private router: Router,
+    private recetteService: RecetteService
+    ){ }
+
+  ngOnInit(){
+    this.recetteList = this.recetteService.getRecetteList();
+  }
 
   goToRecette(recette: Recette){
     this.router.navigate(['/recette', recette.idRecette]);
