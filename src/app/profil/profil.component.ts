@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user/user.service';
+import { MenuComponent } from '../menu/menu.component';
 
 @Component({
   selector: 'app-profil-root',
