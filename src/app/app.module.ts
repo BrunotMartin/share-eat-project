@@ -10,9 +10,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
-  declarations: [AppComponent, ProfilComponent, MenuComponent],
+  declarations: [AppComponent, ProfilComponent, MenuComponent, MessageComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MatToolbarModule, MatListModule,],
   providers: [UserService],
   bootstrap: [AppComponent],
