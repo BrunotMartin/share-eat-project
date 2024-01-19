@@ -4,6 +4,18 @@
     font-size: 30px;
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
 }
+.bol{
+    position: fixed;
+    padding-left: 330px;
+    margin-top: -220px;
+}
+.form{
+    border: 2px solid #000;
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: -100px;
+}
 
 .container{
     display: flex;
@@ -18,14 +30,6 @@
     justify-content: center;
     font-weight: bold;
     font-size: 30px;
-}
-
-.form{
-    border: 2px solid #000;
-    border-radius: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left: -100px;
 }
 
 .buttonConnexion{
@@ -59,11 +63,7 @@
     text-decoration: underline;
 
 }
-.bol{
-    position: fixed;
-    padding-left: 330px;
-    margin-top: -220px;
-}
+
 // Media queries pour rendre la page responsive
 @media screen and (max-width: 768px) {
     .container {
