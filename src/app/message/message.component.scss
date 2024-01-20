@@ -2,20 +2,29 @@ body {
     margin: 0;
 }
 
-.container {
-    display: flex;
-    height: 100vh;
+#grid-container{
+    display: grid;
+    grid-template-rows: 100vh;
+    grid-template-columns: 0.10fr 1fr;
+    height: 100vh; //la page prend seulement tout l'écran ou plus ?
 }
 
-.sidebar {
-    width: 200px;
-    background-color: #f8f9fa;
-    padding: 20px;
+//le menu = la première case de la grid
+#c1{
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+    background: rgb(255,45,45);
+    background: linear-gradient(132deg, rgba(255,45,45,1) 10%, rgba(224,124,17,1) 40%);
 }
 
-.user-profile img {
-    width: 100%;
-    border-radius: 50%;
+#c2{
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 2;
+}
+
+#c3{
+    grid-row: 1 / span 1;
+    grid-column: 3 / span 3;
 }
 
 .contacts, .discussions {

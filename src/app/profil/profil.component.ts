@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user/user.service';
-import { MenuComponent } from '../menu/menu.component';
+import { DeconnexionService } from '../deconnecter/deconnecter.service';
 
 @Component({
   selector: 'app-profil-root',
@@ -12,7 +12,12 @@ export class ProfilComponent implements OnInit {
   prenom: string = '';
   identifiant: string = '';
   biographie: string = '';
-  constructor(private userService: UserService) { }
+  
+  constructor(
+    private userService: UserService,
+    private deconnexionService: DeconnexionService
+  ) { }
+  
 
   ngOnInit(): void {
     // Initialise les données de l'utilisateur depuis le service
@@ -33,8 +38,8 @@ export class ProfilComponent implements OnInit {
   }
 
   deconnexion() {
-    // Logique de déconnexion
-    // Par exemple, rediriger vers la page de connexion ou effacer les données utilisateur
+    // Utilise le service de déconnexion
+    this.deconnexionService.deconnexion();
     console.log("Déconnexion");
   }
 }
