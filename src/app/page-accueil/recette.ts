@@ -5,6 +5,12 @@ export class Recette {
     description: string | undefined;
     date: Date | undefined;
     imageRecette: string | undefined;
-    //like booléen
+    ingredient1: string | undefined;
+    ingredient2: string | undefined;
+    ingredient3: string | undefined;
+    ingredient4: string | undefined;
+    ingredient5: string | undefined;
+    like: boolean |undefined;
+    note: number | undefined;
     //note number
 }

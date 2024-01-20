@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 //import {RECETTES} from '../mock-recette'
 import { Recette } from '../recette';
 import { RecetteService } from '../recette.service';
-
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-detail-recette',
@@ -12,8 +12,9 @@ import { RecetteService } from '../recette.service';
 })
 export class DetailRecetteComponent {
 
-  recetteList: Recette[] | undefined;
+  //recetteList: Recette[] | undefined;
   recette: Recette | undefined;
+  private subscription: Subscription | undefined;
 
   constructor(
     private route: ActivatedRoute, 
@@ -25,8 +26,14 @@ export class DetailRecetteComponent {
     const recetteId: string|null = this.route.snapshot.paramMap.get('id');
    
     if(recetteId){
-      this.recette = this.recetteService.getRecetteById(+recetteId);
-    }
+      this.subscription = this.recetteService.getRecetteById(+recetteId).subscribe({
+        next: (rec: Recette) => {
+          this.recette = rec;
+        },
+        error: error => {
+          console.error('Error fetching recette:', error);
+        }
+      });    }
     
   }
 

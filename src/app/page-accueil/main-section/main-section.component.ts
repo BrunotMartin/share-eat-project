@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RECETTES } from '../mock-recette';
+//import { RECETTES } from '../mock-recette';
 import { Recette } from '../recette';
 import { RecetteService } from '../recette.service';
-
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main-section',
@@ -32,7 +32,7 @@ export class MainSectionComponent implements OnInit{
   };
   
   selectedRecette: any;
-  
+  private subscription: Subscription | undefined;
 
   openModal(recette: any) {
     this.selectedRecette = recette;
@@ -49,7 +49,15 @@ export class MainSectionComponent implements OnInit{
     ){ }
 
   ngOnInit(){
-    this.recetteList = this.recetteService.getRecetteList();
+    this.subscription = this.recetteService.getRecetteList().subscribe({
+      next: (recettes: Recette[]) => {
+        this.recetteList = recettes;
+      },
+      error: error => {
+        console.error('Error fetching recettes:', error);
+      }
+    });
+    //this.recetteList = this.recetteService.getRecetteList();
   }
 
   goToRecette(recette: Recette){

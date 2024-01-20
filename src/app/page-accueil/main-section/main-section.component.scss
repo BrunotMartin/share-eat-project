@@ -51,7 +51,7 @@ hr{
     cursor: pointer;
 }
 
-#titre-recette{
+#recette-container #titre-recette{
     font-size: 25px;
     font-weight:bolder;
     -webkit-text-stroke-width: 0.5px;
@@ -93,39 +93,71 @@ hr{
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 500px;
-    height: 400px;
+    width: 600px;
+    height: 460px;
     transform: translate(-50%, -50%);
-    background-color: rgb(158, 219, 148);
-    padding: 20px;
+    background-image: linear-gradient(to bottom, #8fb150, #83ad55, #78a959, #6ea55d, #64a061, #5c9d65, #559a69, #4e976c, #479571, #409275, #3a9079, #368d7c);    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
+    opacity: 0.95;
 }
 
 #modal #titre-recette{
-    position: absolute;
-    top: 15px;
-    left: 15px;
+    margin-top: 15px;
+    align-self: center;
+    text-decoration: underline;
+    font-size: 30px;
+    font-weight:bolder;
+    color: white;
 }
 
-#modal #nom-utilisateur{
-    position: absolute;
-    top: 15px;
-    right: 15px;
+#modal #description{
+    margin-top: 50px;
+    margin-left: 65px;
+    align-self: left;
+    font-size: 20px;
+    font-weight:bolder;
+    color: white;
+}
+
+#modal #ingredients{
+    margin-top: 50px;
+    margin-left: 65px;
+    align-self: left;
+    font-size: 20px;
+    font-weight:bolder;
+    color: white;
 }
 
 #modal #fermer{
     position: absolute;
-    bottom: 15px;
-    left: 15px;
+    top: 20px;
+    right: 20px;
+    padding: 0 5px 0 5px;
+    font-weight:bolder;
+    border-color: white;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: transparent;
+    font-size: 40px;
+    cursor: pointer;
 }
 
 #modal #en-savoir-plus{
+    padding: 5px;
+    font-weight:bolder;
+    border-color: white;
+    border-radius: 5px;
+    color: white;
+    background-color: #368d7c;
+    font-size: 20px;
     position: absolute;
     bottom: 25px;
-    left: 202px;
+    left: 35%;
+    cursor: pointer;
 }
 
 #pagination-container{

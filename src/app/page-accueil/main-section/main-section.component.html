@@ -32,10 +32,12 @@
         <div id="modal-container">
             <div id="modal">
                 <p id="titre-recette">{{ selectedRecette.titre }}</p>
-                <p id="nom-utilisateur">Publié par {{ selectedRecette.idUtilisateur }}</p>
-                <!-- Affichez d'autres détails de la recette selon vos besoins -->
-                <button id="fermer" (click)="closeModal()">Fermer</button>
-                <button id="en-savoir-plus" (click)="goToRecette(selectedRecette)">En savoir plus</button>
+                <!-- <p id="nom-utilisateur">Publié par {{ selectedRecette.idUtilisateur }}</p> -->
+                <p id="description">Description :  <br/>{{ selectedRecette.description }}</p>
+                <p id="ingredients">Ingrédients :  <br/>{{ selectedRecette.ingredient1 }} {{ selectedRecette.ingredient2 }} {{ selectedRecette.ingredient3 }} {{ selectedRecette.ingredient4 }} {{ selectedRecette.ingredient5 }}</p>
+
+                <button id="fermer" (click)="closeModal()">×</button>
+                <button id="en-savoir-plus" (click)="goToRecette(selectedRecette)">En savoir plus →</button>
             </div>
         </div>
 

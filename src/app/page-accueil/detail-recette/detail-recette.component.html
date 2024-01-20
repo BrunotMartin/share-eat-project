@@ -2,9 +2,10 @@
     <div id="container" *ngIf="recette">
         <div id="detail-recette">
             <h1>Fiche descriptive</h1>
-            <h2>{{recette.titre}}</h2>
-            <h3>Description :</h3>
-            <p>{{recette.description}}</p>
+            <p id="titre">{{recette.titre}}</p>
+            <p id="description">Description : <br/> {{recette.description}}</p>
+            <p id="ingredients">Ingrédients :  <br/>{{ recette.ingredient1 }} {{ recette.ingredient2 }} {{ recette.ingredient3 }} {{ recette.ingredient4 }} {{ recette.ingredient5 }}</p>
+
             <p>Publiée par : {{recette.idUtilisateur}}</p>
             <p>{{recette.imageRecette}}</p>
         </div>
