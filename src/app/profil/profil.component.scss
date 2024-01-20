@@ -1,0 +1,88 @@
+/* profil.component.scss */
+/*
+body{
+    margin: 0;
+}
+*/
+
+#grid-container{
+    display: grid;
+    grid-template-rows: 100vh;
+    grid-template-columns: 0.10fr 1fr;
+    height: 100vh; //la page prend seulement tout l'écran ou plus ?
+}
+
+//le menu = la première case de la grid
+#c1{
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+    background: rgb(255,45,45);
+    background: linear-gradient(132deg, rgba(255,45,45,1) 10%, rgba(224,124,17,1) 40%);
+}
+
+// le composant profil
+#c2{
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 2;
+}
+
+button{
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #D5D8DC ;
+    cursor:pointer;
+    border: none;
+}
+
+button:hover{
+    background-color: #ABB2B9 ;
+    transition: all 0.3s ease-in-out;
+}
+
+hr{
+    width: 700px;
+}
+
+.profile-container {
+    text-align: center;
+}
+
+.profile{
+    margin: auto;
+    margin-top: 50px;
+    max-width: 400px;
+}
+
+.photo-profil, .profile-info, .button-modif{
+    margin: 10px;
+    display: inline-block;
+}
+
+.photo-profil{
+    max-width: 80px;
+    vertical-align: bottom; /* Aligne le bas des éléments sur la même ligne */
+}
+
+.profile-info{
+    text-align: left;
+}
+
+.profile-picture {
+    width: 100%;
+    margin-right: 10px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.button-modif{
+    vertical-align: 49px;
+}
+
+.bio{
+    text-align: left;
+    margin-left: 45px;
+}
+
+.button-deco{
+    margin-top: 20px;
+}

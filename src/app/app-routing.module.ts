@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-//import { AppComponent } from './app.component';
-//import { AccueilComponent } from './page-accueil/accueil/accueil.component';
-//import { DetailRecetteComponent } from './page-accueil/detail-recette/detail-recette.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProfilComponent } from './profil/profil.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'accueil', pathMatch: 'full'},
+  {path: 'profil', component: ProfilComponent},
   {path: '**', component: PageNotFoundComponent}
+
 ];
 
 @NgModule({
