@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BackendServiceService } from '../backend-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,28 +8,17 @@ import { BackendServiceService } from '../backend-service.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  // email = '';
-  // mdp = ''; 
+
   credentials = { mail: '', mdp: '' };
 
-  constructor(private backendService: BackendServiceService) { }
-
-  // onSubmit(email: string, mdp: string): void {
-  //   this.backendService.login(email, mdp).subscribe(
-  //     (response) => {
-  //       console.log('Authentification réussie', response);
-  //     },
-  //     (error) => {
-  //       console.log('Erreur lors de l\'authentification wsh', error);
-  //     }
-  //   );
-  // }
+  constructor(private backendService: BackendServiceService, private router: Router) { }
 
   login() {
     this.backendService.login(this.credentials).subscribe(
       response => {
         // Gérer la réponse réussie, par exemple, stocker le jeton d'authentification
         console.log('Connexion réussie:', response);
+        this.router.navigate(['/inscription']);
       },
       error => {
         // Gérer l'erreur, par exemple, afficher un message d'erreur à l'utilisateur
