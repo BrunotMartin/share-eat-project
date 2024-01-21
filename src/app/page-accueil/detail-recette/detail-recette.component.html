@@ -7,7 +7,9 @@
             <p id="ingredients">Ingrédients :  <br/>{{ recette.ingredient1 }} {{ recette.ingredient2 }} {{ recette.ingredient3 }} {{ recette.ingredient4 }} {{ recette.ingredient5 }}</p>
 
             <p>Publiée par : {{recette.idUtilisateur}}</p>
-            <p>{{recette.imageRecette}}</p>
+            <!-- Utilisation de la balise img pour afficher l'image -->
+            <img [src]="'https://shareeat.alwaysdata.net/photoRecette/' + recette.imageRecette" alt="Image de la recette">
+
         </div>
         <div id="retour-container" (click)="goToAccueil()">
             <a>Retour</a>
