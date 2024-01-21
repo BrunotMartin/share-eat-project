@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Inscription</title>
+    
+    <style>
+        /* Ajoutez ici vos styles personnalisés pour harmoniser les deux pages */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text">Partagez et<br> découvrez de<br> nouvelles<br> recettes avec le<br> monde entier !</h1>
+        <img class="chef" width="450" height="450" src="assets/svg/chef-holding-a-baguette.svg" alt="mockup">
+
+        <div class="form">
+            <p class="connexion">INSCRIPTION</p>
+            <form>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td><label for="nom">Nom :</label><br></td>
+                    </tr>
+                    <tr>
+                        <td><img width="30" height="30" src="assets/svg/utilisateur.svg" alt="Description de l'image SVG"></td>
+                        <td><input type="text" id="nom" name="nom" class="nom" [(ngModel)]="credentials.nom"><br></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><label for="prenom">Prénom :</label><br></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="text" id="prenom" name="prenom" class="prenom" [(ngModel)]="credentials.prenom"><br></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><label for="pseudo">Pseudo :</label><br></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="text" id="pseudo" name="pseudo" class="pseudo" [(ngModel)]="credentials.pseudo"><br></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><label for="email">Adresse de mail :</label><br></td>
+                    </tr>
+                    <tr>
+                        <td><img width="30" height="30" src="assets/svg/icone mail.svg" alt="Description de l'image SVG"></td>
+                        <td><input type="email" id="email" name="email" class="email" [(ngModel)]="credentials.mail"><br></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><label for="mdp">Mot de passe :</label><br></td>
+                    </tr>
+                    <tr>
+                        <td><img width="30" height="30" src="assets/svg/icone mdp.svg" alt="Description de l'image SVG"></td>
+                        <td><input type="password" id="mdp" name="mdp" class="mdp" [(ngModel)]="credentials.mdp"><br></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input (click)="register()" type="submit" value=" S'inscrire" class="buttonInscription"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><p>Vous avez déjà un compte ShareEat ? <br><a routerLink="/login"><strong class="Seconnecter">Se connecter</strong></a></p></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+    </div>
+    <img class="bol" width="300" height="300" src="assets/svg/ramen 3D.svg" alt="Description de l'image SVG">
+</body>
+</html>
+
+<app-footer></app-footer>

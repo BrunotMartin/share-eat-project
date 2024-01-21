@@ -1,0 +1,41 @@
+<div class="container">
+    <h1 class="text">Partagez et<br> découvrez de<br> nouvelles<br> recettes avec le<br> monde entier !</h1>
+    <img width="450" height="450" src="assets/svg/Mockup_ShareEat 1.svg" alt="mockup">
+
+    <div class="form">
+        <p class="connexion">CONNEXION</p>
+        <form>
+            <table>
+                <tr>
+                    <td></td>
+                    <td><label for="email">Adresse de mail :</label><br></td>
+                </tr>
+                <tr>
+                    <td><img width="30" height="30" src="assets/svg/icone mail.svg" alt="Description de l'image SVG"></td>
+                    <td><input type="email" id="email" name="email" class="email" [(ngModel)]="credentials.mail"><br></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><label for="mdp">Mot de passe :</label><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img width="30" height="30" src="assets/svg/icone mdp.svg" alt="Description de l'image SVG"></td>
+                    <td><input id="mdp" name="mdp" class="mdp" [(ngModel)]="credentials.mdp"><br></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input (click)="login()" type="submit" value=" Connexion" class="buttonConnexion"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><p>Vous n'avez pas encore de compte<br> ShareEat ? <a routerLink="/inscription"><strong class="Sinscrire">S'inscrire</strong></a></p></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+</div>
+<img class="bol" width="300" height="300" src="assets/svg/ramen 3D.svg" alt="Description de l'image SVG">
+
+<app-footer></app-footer>

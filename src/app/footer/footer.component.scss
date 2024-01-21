@@ -4,23 +4,17 @@
     margin: 0 10px;
 }
 .footer{
+    margin-top: 15px;
     padding-top: 25px;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     border-top: 1px solid gray;
-    
+
 }
 .footerdiv{
     border-bottom: 1px solid gray;
     padding-bottom: 25px;
 }
-
-
-@media only screen and (max-width: 400px) {
-    .footer p{
-        font-size: 2px;
-    }
-  }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { UserService } from './user/user.service';
-import { ProfilComponent } from './profil/profil.component';
+
 import { MenuComponent } from './page-accueil/menu/menu.component';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,11 +10,19 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PageAccueilModule } from './page-accueil/page-accueil.module';
+
 import { MessageComponent } from './message/message.component';
+import { ProfilComponent } from './profil/profil.component';
+
+import { LoginComponent } from './login/login.component';
+import { FooterComponent } from './footer/footer.component';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent, ProfilComponent, MenuComponent, MessageComponent],
-  imports: [BrowserModule, PageAccueilModule, AppRoutingModule, HttpClientModule],
+  declarations: [AppComponent, PageNotFoundComponent, ProfilComponent, MenuComponent, MessageComponent, LoginComponent, FooterComponent, InscriptionComponent],
+  imports: [BrowserModule, PageAccueilModule, AppRoutingModule, HttpClientModule, CommonModule, FormsModule],
   providers: [UserService],
   bootstrap: [AppComponent],
 })
