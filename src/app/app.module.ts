@@ -10,9 +10,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PageAccueilModule } from './page-accueil/page-accueil.module';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent, ProfilComponent, MenuComponent],
+  declarations: [AppComponent, PageNotFoundComponent, ProfilComponent, MenuComponent, MessageComponent],
   imports: [BrowserModule, PageAccueilModule, AppRoutingModule, HttpClientModule],
   providers: [UserService],
   bootstrap: [AppComponent],
