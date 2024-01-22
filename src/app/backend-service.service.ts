@@ -10,6 +10,7 @@ export class BackendServiceService {
   readonly ENDPOINT_UTILISATEURS = '/utilisateurs';
   readonly ENDPOINT_LOGIN = '/login';
   readonly ENDPOINT_INSCRIPTION = '/inscription';
+  readonly ENDPOINT_DECONNEXION = '/deconnexion';
 
   constructor(private httpClient : HttpClient) {  }
 
@@ -31,4 +32,12 @@ export class BackendServiceService {
    getAllUtilisateurs(){
      return this.httpClient.get(this.API_URL + this.ENDPOINT_UTILISATEURS);
    }
+
+   // Ajout de la méthode de déconnexion
+  deconnexion(): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.httpClient.post<any>(this.API_URL + this.ENDPOINT_DECONNEXION, {}, { headers });
+  }
 }

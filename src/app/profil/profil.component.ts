@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user/user.service';
+import { BackendServiceService } from '../backend-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profil-root',
@@ -8,10 +10,10 @@ import { UserService } from '../user/user.service';
 })
 
 export class ProfilComponent implements OnInit {
-  prenom: string = '';
-  identifiant: string = '';
-  biographie: string = '';
-  constructor(private userService: UserService) { }
+  prenom = '';
+  identifiant = '';
+  biographie = '';
+  constructor(private backendService: BackendServiceService, private userService: UserService, private router: Router ) { }
 
   ngOnInit(): void {
     // Initialise les données de l'utilisateur depuis le service
@@ -32,8 +34,19 @@ export class ProfilComponent implements OnInit {
   }
 
   deconnexion() {
-    // Logique de déconnexion
-    // Par exemple, rediriger vers la page de connexion ou effacer les données utilisateur
-    console.log("Déconnexion");
+    // Appeler la méthode de déconnexion du service backend
+    this.backendService.deconnexion().subscribe(
+      (response) => {
+        // Gérer la réponse de déconnexion (peut être vide)
+        console.log('Déconnexion réussie', response);
+        this.router.navigate(['/login']);
+      },
+      (error) => {
+        // Gérer les erreurs de déconnexion
+        console.error('Erreur lors de la déconnexion', error);
+      }
+    );
+    // Autres actions de déconnexion, par exemple, rediriger vers la page de connexion
+    console.log('Déconnexion');
   }
 }

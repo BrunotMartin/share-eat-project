@@ -18,7 +18,7 @@ export class LoginComponent {
       response => {
         // Gérer la réponse réussie, par exemple, stocker le jeton d'authentification
         console.log('Connexion réussie:', response);
-        this.router.navigate(['/inscription']);
+        this.router.navigate(['/accueil']);
       },
       error => {
         // Gérer l'erreur, par exemple, afficher un message d'erreur à l'utilisateur
