@@ -31,6 +31,34 @@ h1{
     color: white;
 }
 
+#publie-par{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#description{
+    margin-top: 70px;
+    margin-right: 150px;
+    font-size: 20px;
+    font-weight:bolder;
+    color: white;
+}
+
+#ingredients{
+    margin-top: 50px;
+    margin-right: 150px;
+    font-size: 20px;
+    font-weight:bolder;
+    color: white;
+}
+
+#img-container{
+    margin-top: 40px;
+    height: 400px;
+    width: 280px;
+    border-radius: 15px;
+}
 
 #retour-container{
     background-color: orange;

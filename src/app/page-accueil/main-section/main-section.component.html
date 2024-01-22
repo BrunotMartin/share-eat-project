@@ -18,7 +18,7 @@
         <app-recette></app-recette>
         <app-recette></app-recette> -->
         <div *ngFor="let recette of recetteList | paginate: { itemsPerPage: pageSize, currentPage: p }">
-            <div (click)="openModal(recette)" id="recette-container">
+            <div (click)="openModal(recette)" id="recette-container" [style.backgroundImage]="'url(https://shareeat.alwaysdata.net/photoRecette/' + recette.imageRecette + ')'" style="background-size: cover;">                
                 <p id="titre-recette">{{recette.titre}}</p>
             
                 <div id="like-container">❤️</div>
