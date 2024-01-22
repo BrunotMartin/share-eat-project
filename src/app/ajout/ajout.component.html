@@ -1,0 +1,27 @@
+<div id="grid-container">
+
+    <app-menu id="c1"></app-menu>
+    <!-- profil.component.html -->
+    <div id="c2 "id="ajout-container">
+      <div class="ajout-form">
+        <form>
+            <label for="titre">Titre:</label>
+            <input type="text" id="titre" [(ngModel)]="newRecette.titre" name="titre" required>
+          
+            <label for="description">Description:</label>
+            <textarea id="description" [(ngModel)]="newRecette.description" name="description" required></textarea>
+          
+            <label for="imageRecette">Image URL:</label>
+            <input type="text" id="imageRecette" [(ngModel)]="newRecette.imageRecette" name="imageRecette">
+          
+            <button type="submit" (click)="createRecette()">Ajouter la recette</button>
+          </form>
+
+      </div>
+
+    </div>
+  
+  </div>
+  
+  <app-footer></app-footer>
+  

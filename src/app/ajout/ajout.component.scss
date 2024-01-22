@@ -1,0 +1,86 @@
+/* profil.component.scss */
+/*
+body{
+    margin: 0;
+}
+*/
+
+#grid-container{
+    display: grid;
+    grid-template-rows: 100vh;
+    grid-template-columns: 0.10fr 1fr;
+    height: 100vh; //la page prend seulement tout l'écran ou plus ?
+}
+
+//le menu = la première case de la grid
+#c1{
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+    background: rgb(255,45,45);
+    background: linear-gradient(132deg, rgba(255,45,45,1) 10%, rgba(224,124,17,1) 40%);
+}
+
+// le composant profil
+#c2{
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 2;
+}
+
+button{
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #D5D8DC ;
+    cursor:pointer;
+    border: none;
+}
+
+button:hover{
+    background-color: #ABB2B9 ;
+    transition: all 0.3s ease-in-out;
+}
+
+hr{
+    width: 700px;
+}
+
+#ajout-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Ajoutez ce style dans votre fichier create-recette.component.scss ou un autre fichier de style CSS */
+
+.ajout-form {
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 8px;
+  }
+  
+  input,
+  textarea {
+    padding: 8px;
+    margin-bottom: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  

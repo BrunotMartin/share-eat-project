@@ -18,6 +18,8 @@ export class RecetteService {
 
   readonly ENDPOINT_RECETTE_BY_ID = "/recette/";
 
+  readonly ENDPOINT_CREATE_RECETTE = "/ajout";
+
   constructor(private httpClient: HttpClient) {}
 
 
@@ -30,5 +32,10 @@ export class RecetteService {
     const url = `${this.API_URL}${this.ENDPOINT_RECETTE_BY_ID}${recetteId}`;
     return this.httpClient.get<Recette>(url);
     //return RECETTES.find(recette => recette.idRecette == recetteId);
+  }
+
+  createRecette(newRecette: Recette): Observable<Recette> {
+    const url = `${this.API_URL}${this.ENDPOINT_RECETTES}`;
+    return this.httpClient.post<Recette>(url, newRecette);
   }
 }

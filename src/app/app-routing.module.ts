@@ -7,6 +7,7 @@ import { MessageComponent } from './message/message.component';
 
 import { LoginComponent } from './login/login.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { AjoutComponent } from './ajout/ajout.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'accueil', pathMatch: 'full'},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'message', component: MessageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'inscription', component: InscriptionComponent },
+  {path: 'ajout', component: AjoutComponent },
   {path: '', redirectTo: '/login', pathMatch:'full'},
   {path: '**', component: PageNotFoundComponent}
 

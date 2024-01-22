@@ -19,9 +19,10 @@ import { FooterComponent } from './footer/footer.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AjoutComponent } from './ajout/ajout.component';
 
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent, ProfilComponent, MenuComponent, MessageComponent, LoginComponent, FooterComponent, InscriptionComponent],
+  declarations: [AppComponent, PageNotFoundComponent, ProfilComponent, MenuComponent, MessageComponent, LoginComponent, FooterComponent, InscriptionComponent, AjoutComponent],
   imports: [BrowserModule, PageAccueilModule, AppRoutingModule, HttpClientModule, CommonModule, FormsModule],
   providers: [UserService],
   bootstrap: [AppComponent],
