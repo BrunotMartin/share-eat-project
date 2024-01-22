@@ -7,9 +7,10 @@ import { MessageComponent } from './message/message.component';
 
 import { LoginComponent } from './login/login.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { AccueilComponent } from './page-accueil/accueil/accueil.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'accueil', pathMatch: 'full'},
+  {path: 'accueil', component: AccueilComponent},
   {path: 'profil', component: ProfilComponent},
   {path: 'message', component: MessageComponent},
   {path: 'login', component: LoginComponent},
