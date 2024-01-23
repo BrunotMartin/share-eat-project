@@ -39,7 +39,7 @@ export class ProfilComponent implements OnInit {
       (response) => {
         // Gérer la réponse de déconnexion (peut être vide)
         console.log('Déconnexion réussie', response);
-        this.router.navigate(['/login'], { replaceUrl: true });
+        this.router.navigate(['/login']);
       },
       (error) => {
         // Gérer les erreurs de déconnexion
