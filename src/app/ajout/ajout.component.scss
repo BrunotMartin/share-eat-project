@@ -51,6 +51,15 @@ hr{
 }
 /* Ajoutez ce style dans votre fichier create-recette.component.scss ou un autre fichier de style CSS */
 
+#titre-form{
+  width: 100%;
+  padding: 15px;
+  color: black;
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .ajout-form {
     max-width: 400px;
     margin: auto;

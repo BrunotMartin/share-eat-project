@@ -5,14 +5,20 @@
     <div id="c2 "id="ajout-container">
       <div class="ajout-form">
         <form>
+            <p id="titre-form">Ajouter une recette</p>
+
             <label for="titre">Titre :</label>
             <input type="text" id="titre" [(ngModel)]="newRecette.titre" name="titre" required>
           
             <label for="description">Description :</label>
             <textarea id="description" [(ngModel)]="newRecette.description" name="description" required></textarea>
-          
-            <label for="imageRecette">Image :</label>
-            <input type="text" id="imageRecette" [(ngModel)]="newRecette.imageRecette" name="imageRecette">
+
+            <label for="image">Sélectionnez une image :</label>
+            <input type="file" id="image" name="image" accept="image/*">
+            <label class="custom-file-upload" for="image">Choisissez un fichier</label>
+
+            <!-- <label for="imageRecette">Image :</label>
+            <input type="text" id="imageRecette" [(ngModel)]="newRecette.imageRecette" name="imageRecette"> -->
           
             <button type="submit" (click)="createRecette()">Ajouter la recette</button>
           </form>
