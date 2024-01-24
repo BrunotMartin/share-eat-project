@@ -18,6 +18,11 @@ export class LoginComponent {
       response => {
         // Gérer la réponse réussie, par exemple, stocker le jeton d'authentification
         console.log('Connexion réussie:', response);
+        // Stocker l'ID de l'utilisateur connecté
+        const loggedInUserId = response.idUtilisateur;
+        this.backendService.setLoggedInUserId(loggedInUserId);
+        console.log('ID utilisateur connecté:', loggedInUserId);
+
         this.router.navigate(['/accueil']);
       },
       error => {
@@ -25,6 +30,10 @@ export class LoginComponent {
         console.error('Erreur de connexion:', error);
       }
     );
+  }
+
+  redirectToLoginPage() {
+    this.router.navigate(['/login'], { replaceUrl: true });
   }
   utilisateurs: any[] = [];
 

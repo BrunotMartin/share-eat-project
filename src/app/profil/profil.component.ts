@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user/user.service';
 import { BackendServiceService } from '../backend-service.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-profil-root',
@@ -13,7 +15,7 @@ export class ProfilComponent implements OnInit {
   prenom = '';
   identifiant = '';
   biographie = '';
-  constructor(private backendService: BackendServiceService, private userService: UserService, private router: Router ) { }
+  constructor(private backendService: BackendServiceService, private userService: UserService, private router: Router, private location : Location ) { }
 
   ngOnInit(): void {
     // Initialise les données de l'utilisateur depuis le service
@@ -39,13 +41,22 @@ export class ProfilComponent implements OnInit {
       (response) => {
         // Gérer la réponse de déconnexion (peut être vide)
         console.log('Déconnexion réussie', response);
+        this.backendService.setLoggedIn(false);
         this.router.navigate(['/login']);
+
       },
       (error) => {
         // Gérer les erreurs de déconnexion
         console.error('Erreur lors de la déconnexion', error);
+
+        if (error instanceof HttpErrorResponse) {
+          console.error('Statut de l\'erreur:', error.status);
+          console.error('Message de l\'erreur:', error.error);
+        }
       }
     );
+
+    
     // Autres actions de déconnexion, par exemple, rediriger vers la page de connexion
     console.log('Déconnexion');
   }

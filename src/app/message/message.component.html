@@ -2,36 +2,35 @@
     <app-menu id="c1"></app-menu>
     <div id="c2" class="discussion-list">
         <!-- Barre de recherche pour les discussions -->
-        <div class="search-bar">
-            <input type="text" placeholder="Rechercher une discussion...">
-            <button>Rechercher</button>
+        <div>
+            <label for="pseudoInput">Search User by Pseudo:</label>
+            <input id="pseudoInput" [(ngModel)]="pseudo" />
+            <button (click)="searchUser()">Search</button>
         </div>
-        <!-- Liste des discussions -->
-        <div class="discussions">
-            <h3>Mes amis</h3>
-            <ul>
-                <li><a href="#">Discussion 1</a></li>
-                <li><a href="#">Discussion 2</a></li>
-                <!-- Ajouter d'autres discussions au besoin -->
-            </ul>
+
+        <div *ngIf="userData">
+            <h2>User Details</h2>
+            <p>ID: {{ userData.idUtilisateur }}</p>
+            <p>Pseudo: {{ userData.pseudo }}</p>
+            <p>Prénom: {{ userData.prenom }}</p>
+            <p>Nom: {{ userData.nom }}</p>
+            <p>Email: {{ userData.mail }}</p>
+            <!-- Add more details as needed -->
         </div>
+        
     </div>
     <div id="c3" class="conversation">
-        <div class="messages">
-            <!-- Messages échangés entre les utilisateurs -->
-            <div class="message">
-                <p><strong>Nom Utilisateur:</strong> Bonjour, comment ça va?</p>
-            </div>
-            <div class="message">
-                <p><strong>Autre Utilisateur:</strong> Ça va bien, merci! Et toi?</p>
-            </div>
-            <!-- Ajouter d'autres messages au besoin -->
-        </div>
         <!-- Zone de saisie des messages -->
         <div class="message-input">
-            <input type="text" placeholder="Tapez votre message ici...">
-            <button>Envoyer</button>
+            <input type="text" [(ngModel)]="messageToSend" placeholder="Tapez votre message ici...">
+            <button (click)="sendMessage()" [disabled]="!messageToSend.trim()">Envoyer</button>
         </div>
+        <div *ngFor="let message of messages" class="message">
+            <p><strong>{{ message.idSender }}:</strong> {{ message.message }} <span class="timestamp">{{ message.heure | date: 'short' }}</span></p>
+          </div>
+          
+          
+        
     </div>
 </div>
 
