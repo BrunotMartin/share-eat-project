@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user/user.service';
 import { BackendServiceService } from '../backend-service.service';
 import { Router } from '@angular/router';
+import { MenuComponent } from '../page-accueil/menu/menu.component';
 
 @Component({
   selector: 'app-profil-root',

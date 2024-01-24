@@ -8,7 +8,7 @@ body{
 #grid-container{
     display: grid;
     grid-template-rows: 100vh;
-    grid-template-columns: 0.10fr 1fr;
+    grid-template-columns: 0.15fr 1fr;
     height: 100vh; //la page prend seulement tout l'écran ou plus ?
 }
 
@@ -41,6 +41,7 @@ button:hover{
 
 hr{
     width: 700px;
+    margin: auto;
 }
 
 .profile-container {

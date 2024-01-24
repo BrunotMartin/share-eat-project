@@ -5,7 +5,7 @@ import { DetailRecetteComponent } from './detail-recette/detail-recette.componen
 import { FooterComponent } from './footer/footer.component';
 import { HeroBannerComponent } from './hero-banner/hero-banner.component';
 import { MainSectionComponent } from './main-section/main-section.component';
-import { MenuComponent } from '../menu/menu.component';
+import { MenuComponent } from './menu/menu.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -27,6 +27,7 @@ const accueilRoutes: Routes = [
     CommonModule,
     RouterModule.forChild(accueilRoutes),
     NgxPaginationModule
-  ]
+  ],
+  exports: [MenuComponent, FooterComponent],
 })
 export class PageAccueilModule { }
