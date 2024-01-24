@@ -35,7 +35,7 @@ export class RecetteService {
   }
 
   createRecette(newRecette: Recette): Observable<Recette> {
-    const url = `${this.API_URL}${this.ENDPOINT_RECETTES}`;
+    const url = `${this.API_URL}${this.ENDPOINT_CREATE_RECETTE}`;
     return this.httpClient.post<Recette>(url, newRecette);
   }
 }
