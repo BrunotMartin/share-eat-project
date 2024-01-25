@@ -51,7 +51,7 @@ export class MainSectionComponent implements OnInit{
   ngOnInit(){
     this.subscription = this.recetteService.getRecetteList().subscribe({
       next: (recettes: Recette[]) => {
-        this.recetteList = recettes;
+        this.recetteList = recettes.reverse();
       },
       error: error => {
         console.error('Error fetching recettes:', error);
