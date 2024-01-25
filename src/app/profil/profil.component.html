@@ -6,11 +6,11 @@
   <div id="c2 "class="profile-container">
     <div class="profile">
       <div class="photo-profil">
-        <img src="assets/img/profil.jpg" alt="Photo de profil" class="profile-picture">
+        <img [src]="profileImage || 'assets/img/profil.jpg'" alt="Photo de profil" class="profile-picture">
       </div>
       <div class="profile-info">
-        <h2>{{prenom}}</h2>
-        <p>{{identifiant}}</p>
+        <h2>{{getPrenomUtilisateurConnecte()}}</h2>
+        <p>{{getPseudoUtilisateurConnecte()}}</p>
       </div>
       <div class="button-modif">
         <button class="modify-button" (click)="modifierProfil()">Modifier le profil</button>

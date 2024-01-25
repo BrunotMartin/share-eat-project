@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,8 @@ export class BackendServiceService {
 
   private isAuthenticated = false;
   private loggedInUserId: number | null = null;
+  private loggedInUserPrenom: string | null = null;
+  private loggedInUserPseudo: string | null = null;
 
   
 
@@ -42,13 +44,30 @@ export class BackendServiceService {
     return this.loggedInUserId;
   }
 
+  // Méthode pour récupérer le prénom de l'utilisateur connecté
+  getPrenomUtilisateurConnecte(): string | null {
+    return this.loggedInUserPrenom;
+  }
+
+  // Méthode pour récupérer le pseudo de l'utilisateur connecté
+  getPseudoUtilisateurConnecte(): string | null {
+    return this.loggedInUserPseudo;
+  }
+
   
 
    login(credentials: { mail: string, mdp: string }): Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-     return this.httpClient.post<any>(this.API_URL+this.ENDPOINT_LOGIN, credentials, { headers });
+     return this.httpClient.post<any>(this.API_URL+this.ENDPOINT_LOGIN, credentials, { headers }).pipe(
+      tap(response => {
+        // Stockez le prénom et le pseudo après la connexion réussie
+        this.loggedInUserPrenom = response.prenom;
+        this.loggedInUserPseudo = response.pseudo;
+      })
+      );
+     
    }
 
    registerUser(credentials: { nom: string, prenom: string, mail: string, mdp: string }): Observable<any> {
@@ -88,6 +107,13 @@ export class BackendServiceService {
   getMessagesBetweenUsers(idSender: number, idReceiver: number): Observable<any> {
     const url = `${this.API_URL}/messagerie?idSender=${idSender}&idReceiver=${idReceiver}`;
     return this.httpClient.get(url);
+  }
+
+
+  getProfileImage(): Observable<any> {
+    const userId = this.getLoggedInUserId();
+    const url = `${this.API_URL}/utilisateurs/${userId}/photo`;
+    return this.httpClient.get(url, { responseType: 'blob' });
   }
   
 

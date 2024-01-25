@@ -18,7 +18,27 @@ export class ProfilComponent implements OnInit {
   prenom = '';
   identifiant = '';
   biographie = '';
+  profileImage: any;
+  
   constructor(private backendService: BackendServiceService, private userService: UserService, private router: Router, private location : Location ) { }
+
+  loadProfileImage(): void {
+    this.backendService.getProfileImage().subscribe(
+      (imageData) => {
+        // Créer un objet Blob à partir des données binaires
+        const blob = new Blob([imageData], { type: 'image/*' });
+  
+        // Convertir le Blob en URL d'image
+        const imageUrl = URL.createObjectURL(blob);
+  
+        // Stocker l'URL de l'image de profil dans la variable profileImage
+        this.profileImage = imageUrl;
+      },
+      (error) => {
+        console.error('Erreur lors du chargement de l\'image de profil', error);
+      }
+    );
+  }
 
   ngOnInit(): void {
     // Initialise les données de l'utilisateur depuis le service
@@ -31,6 +51,18 @@ export class ProfilComponent implements OnInit {
     this.identifiant = userIdentifiant ? userIdentifiant : '';
     this.biographie = userBiographie ? userBiographie : '';
   }
+
+  // Méthode pour récupérer le prénom de l'utilisateur connecté
+  getPrenomUtilisateurConnecte(): string | null {
+    return this.backendService.getPrenomUtilisateurConnecte();
+  }
+
+  // Méthode pour récupérer le pseudo de l'utilisateur connecté
+  getPseudoUtilisateurConnecte(): string | null {
+    return this.backendService.getPseudoUtilisateurConnecte();
+  }
+
+
 
   modifierProfil() {
     // Logique pour la modification du profil (à compléter)
