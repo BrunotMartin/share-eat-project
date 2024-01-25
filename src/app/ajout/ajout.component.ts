@@ -16,7 +16,7 @@ export class AjoutComponent {
    date: new Date(), 
    imageRecette: '', 
    idRecette: undefined, 
-   idUtilisateur: 32, 
+   idUtilisateur: 31, 
    ingr1: undefined, 
    ingr2: undefined, 
    ingr3: undefined, 
