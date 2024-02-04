@@ -81,10 +81,27 @@ export class BackendServiceService {
     return this.httpClient.post<any>(this.API_URL + this.ENDPOINT_INSCRIPTION, credentials, { headers });
   }
   
+
+
+
+
+
+
+
+
+  
   getUtilisateurById(userId: number): Observable<Utilisateur> {
     const url = `${this.API_URL}${this.ENDPOINT_UTILISATEUR_BY_ID}${userId}`;
     return this.httpClient.get<Utilisateur>(url);
   }
+
+
+
+
+
+
+
+
 
    getAllUtilisateurs(){
      return this.httpClient.get(this.API_URL + this.ENDPOINT_UTILISATEURS);
