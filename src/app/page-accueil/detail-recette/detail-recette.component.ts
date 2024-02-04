@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Recette } from '../recette';
 import { RecetteService } from '../recette.service';
 import { Subscription } from 'rxjs';
+import { BackendServiceService } from '../../backend-service.service';
+import { Utilisateur } from 'src/app/utilisateur';
 
 @Component({
   selector: 'app-detail-recette',
@@ -14,12 +16,16 @@ export class DetailRecetteComponent {
 
   //recetteList: Recette[] | undefined;
   recette: Recette | undefined;
+  idUser: number | undefined;
   private subscription: Subscription | undefined;
+  utilisateur: Utilisateur | undefined;
 
   constructor(
     private route: ActivatedRoute, 
     private router: Router,
-    private recetteService: RecetteService) { }
+    private recetteService: RecetteService,
+    private backendService: BackendServiceService) { }
+
 
   ngOnInit(){
     //this.recetteList = RECETTES;
@@ -29,15 +35,36 @@ export class DetailRecetteComponent {
       this.subscription = this.recetteService.getRecetteById(+recetteId).subscribe({
         next: (rec: Recette) => {
           this.recette = rec;
+          this.idUser = rec.idUtilisateur;
+
+          if (this.idUser !== undefined) {
+            this.getUtilisateurById(this.idUser);
+          }
         },
         error: error => {
           console.error('Error fetching recette:', error);
         }
-      });    }
+      }); 
+      
+     
+    
+    }
     
   }
 
   goToAccueil(){
     this.router.navigate(['/accueil']);
+  }
+
+  getUtilisateurById(userId: number) {
+    this.backendService.getUtilisateurById(userId).subscribe({
+      next: (user: Utilisateur) => {
+        this.utilisateur = user;
+        console.log('User:', user);
+      },
+      error: error => {
+        console.error('Error fetching utilisateur:', error);
+      }
+    });
   }
 }

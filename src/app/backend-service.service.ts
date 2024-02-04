@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
+import { Utilisateur } from './utilisateur';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,14 @@ export class BackendServiceService {
   readonly ENDPOINT_INSCRIPTION = '/inscription';
   readonly ENDPOINT_DECONNEXION = '/deconnexion';
   readonly ENDPOINT_RECHERCHE_UTILISATEUR = '/pseudo';
+  readonly ENDPOINT_UTILISATEUR_BY_ID = '/utilisateur/';
+
 
   private isAuthenticated = false;
   private loggedInUserId: number | null = null;
   private loggedInUserPrenom: string | null = null;
   private loggedInUserPseudo: string | null = null;
+  
 
   
 
@@ -77,6 +81,10 @@ export class BackendServiceService {
     return this.httpClient.post<any>(this.API_URL + this.ENDPOINT_INSCRIPTION, credentials, { headers });
   }
   
+  getUtilisateurById(userId: number): Observable<Utilisateur> {
+    const url = `${this.API_URL}${this.ENDPOINT_UTILISATEUR_BY_ID}${userId}`;
+    return this.httpClient.get<Utilisateur>(url);
+  }
 
    getAllUtilisateurs(){
      return this.httpClient.get(this.API_URL + this.ENDPOINT_UTILISATEURS);
