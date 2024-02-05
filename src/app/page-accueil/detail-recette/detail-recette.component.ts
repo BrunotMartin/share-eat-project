@@ -52,19 +52,19 @@ export class DetailRecetteComponent {
     
   }
 
-  goToAccueil(){
-    this.router.navigate(['/accueil']);
-  }
-
   getUtilisateurById(userId: number) {
     this.backendService.getUtilisateurById(userId).subscribe({
       next: (user: Utilisateur) => {
         this.utilisateur = user;
-        console.log('User:', user);
+        //console.log('User:', user);
       },
       error: error => {
         console.error('Error fetching utilisateur:', error);
       }
     });
+  }
+
+  goToAccueil(){
+    this.router.navigate(['/accueil']);
   }
 }
