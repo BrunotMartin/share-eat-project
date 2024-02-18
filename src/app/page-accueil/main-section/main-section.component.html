@@ -35,6 +35,21 @@
                 <!-- <p id="nom-utilisateur">Publié par {{ selectedRecette.idUtilisateur }}</p> -->
                 <p id="description">Description :  <br/>{{ selectedRecette.description }}</p>
                 <p id="ingredients">Ingrédients :  <br/>{{ selectedRecette.ingredient1 }} {{ selectedRecette.ingredient2 }} {{ selectedRecette.ingredient3 }} {{ selectedRecette.ingredient4 }} {{ selectedRecette.ingredient5 }}</p>
+                
+
+                <div id="commentaires-section">
+                    <p>Commentaires : </p>
+                    <div *ngIf="commentairesList.length > 0; else noCommentaires">
+                        <div *ngFor="let commentaire of commentairesList">
+                            <p>{{ commentaire.contenu }}</p>
+                            <p>Commentaire de : {{ commentaire.userDetails.nom }} {{ commentaire.userDetails.prenom }}</p>
+                            <!-- Autres détails du commentaire -->
+                        </div>
+                    </div>
+                    <ng-template #noCommentaires>
+                        <p>Aucun commentaire pour cette recette.</p>
+                    </ng-template>
+                </div>
 
                 <button id="fermer" (click)="closeModal()">×</button>
                 <button id="en-savoir-plus" (click)="goToRecette(selectedRecette)">En savoir plus →</button>

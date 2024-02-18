@@ -12,6 +12,7 @@ export class BackendServiceService {
   readonly ENDPOINT_INSCRIPTION = '/inscription';
   readonly ENDPOINT_DECONNEXION = '/deconnexion';
   readonly ENDPOINT_RECHERCHE_UTILISATEUR = '/pseudo';
+  readonly ENDPOINT_COMMENTAIRES = '/commentaires';
 
   private isAuthenticated = false;
   private loggedInUserId: number | null = null;
@@ -115,6 +116,10 @@ export class BackendServiceService {
     const url = `${this.API_URL}/utilisateurs/${userId}/photo`;
     return this.httpClient.get(url, { responseType: 'blob' });
   }
+
+  getUserBio(): Observable<string[]> {
+    return this.httpClient.get<string[]>(`${this.API_URL}/utilisateurs/bio`);
+  }
   
 
 
@@ -126,3 +131,5 @@ export class BackendServiceService {
     return this.httpClient.post<any>(this.API_URL + this.ENDPOINT_DECONNEXION, {}, { headers });
   }
 }
+
+

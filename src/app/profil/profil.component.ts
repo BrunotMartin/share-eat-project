@@ -19,6 +19,8 @@ export class ProfilComponent implements OnInit {
   identifiant = '';
   biographie = '';
   profileImage: any;
+  bio: any;
+
   
   constructor(private backendService: BackendServiceService, private userService: UserService, private router: Router, private location : Location ) { }
 
@@ -40,6 +42,8 @@ export class ProfilComponent implements OnInit {
     );
   }
 
+  
+
   ngOnInit(): void {
     // Initialise les données de l'utilisateur depuis le service
     const userPrenom = this.userService.getPrenom();
@@ -50,6 +54,14 @@ export class ProfilComponent implements OnInit {
     this.prenom = userPrenom ? userPrenom : '';
     this.identifiant = userIdentifiant ? userIdentifiant : '';
     this.biographie = userBiographie ? userBiographie : '';
+
+    const userId = this.backendService.getLoggedInUserId();
+    // this.bioList$ = this.backendService.getUserBio();
+
+  if (userId) {
+    // Appeler la méthode pour charger la bio lors de l'initialisation
+    // this.loadProfileBio(userId);
+  }
   }
 
   // Méthode pour récupérer le prénom de l'utilisateur connecté
@@ -69,6 +81,8 @@ export class ProfilComponent implements OnInit {
     // Par exemple, ouvrir une boîte de dialogue/modal pour la modification
     console.log("Modifier le profil");
   }
+
+  
 
   deconnexion() {
     // Appeler la méthode de déconnexion du service backend

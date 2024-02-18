@@ -20,6 +20,8 @@ export class RecetteService {
 
   readonly ENDPOINT_CREATE_RECETTE = "/ajout";
 
+  readonly ENDPOINT_COMMENTAIRES = '/commentaires';
+
   constructor(private httpClient: HttpClient) {}
 
 
@@ -38,4 +40,13 @@ export class RecetteService {
     const url = `${this.API_URL}${this.ENDPOINT_CREATE_RECETTE}`;
     return this.httpClient.post<Recette>(url, newRecette);
   }
+
+  getCommentaires(recetteId: number): Observable<any> {
+    return this.httpClient.get<any>(`${this.API_URL}${this.ENDPOINT_COMMENTAIRES}?idRecette=${recetteId}`);
+  }
+
+  getUserDetails(userId: number): Observable<any> {
+    return this.httpClient.get<any>(`${this.API_URL}/utilisateur/${userId}`);
+  }
+  
 }

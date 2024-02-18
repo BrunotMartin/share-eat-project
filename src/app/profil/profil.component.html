@@ -15,10 +15,9 @@
       <div class="button-modif">
         <button class="modify-button" (click)="modifierProfil()">Modifier le profil</button>
       </div>
-      <div class="bio">
-        <p>{{biographie}}</p>
-        <!-- Ajoute un formulaire pour modifier la biographie ici -->
-      </div>
+      <!-- <div *ngFor="let bio of bioList$ | async">
+        {{ bio }}
+      </div> -->
     </div>
     <hr>
     <!-- Ajoute la classe bottom-separator ici -->

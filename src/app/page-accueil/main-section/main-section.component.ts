@@ -5,6 +5,7 @@ import { Recette } from '../recette';
 import { RecetteService } from '../recette.service';
 import { Subscription } from 'rxjs';
 
+
 @Component({
   selector: 'app-main-section',
   templateUrl: './main-section.component.html',
@@ -32,10 +33,12 @@ export class MainSectionComponent implements OnInit{
   };
   
   selectedRecette: any;
+  commentairesList: any[] = []; 
   private subscription: Subscription | undefined;
 
   openModal(recette: any) {
     this.selectedRecette = recette;
+    this.getCommentaires(recette.idRecette);
   }
 
   closeModal() {
@@ -49,6 +52,13 @@ export class MainSectionComponent implements OnInit{
     ){ }
 
   ngOnInit(){
+
+    this.recetteService.getCommentaires(6)
+      .subscribe(commentaires => {
+        this.commentairesList = commentaires;
+        console.log('Commentaires récupérés pour la recette 6 :', this.commentairesList);
+      });
+    
     this.subscription = this.recetteService.getRecetteList().subscribe({
       next: (recettes: Recette[]) => {
         this.recetteList = recettes.reverse();
@@ -62,5 +72,20 @@ export class MainSectionComponent implements OnInit{
 
   goToRecette(recette: Recette){
     this.router.navigate(['/recette', recette.idRecette]);
+  }
+
+  getCommentaires(recetteId: number): void {
+    this.recetteService.getCommentaires(recetteId)
+    .subscribe(commentaires => {
+      this.commentairesList = commentaires;
+
+      // Pour chaque commentaire, récupérez les détails de l'utilisateur
+      this.commentairesList.forEach(commentaire => {
+        this.recetteService.getUserDetails(commentaire.idUtilisateur)
+          .subscribe(user => {
+            commentaire.userDetails = user; // Stockez les détails de l'utilisateur dans le commentaire
+          });
+      });
+    });
   }
 }
