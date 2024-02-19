@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Recette } from '../recette';
 import { RecetteService } from '../recette.service';
 import { Subscription } from 'rxjs';
+import { BackendServiceService } from 'src/app/backend-service.service';
+
 
 
 @Component({
@@ -34,11 +36,15 @@ export class MainSectionComponent implements OnInit{
   
   selectedRecette: any;
   commentairesList: any[] = []; 
+  userDetailsMap: Map<number, any> = new Map<number, any>();
+  newCommentContent = '';
+
   private subscription: Subscription | undefined;
 
   openModal(recette: any) {
     this.selectedRecette = recette;
     this.getCommentaires(recette.idRecette);
+    this.newCommentContent = '';
   }
 
   closeModal() {
@@ -48,8 +54,10 @@ export class MainSectionComponent implements OnInit{
 
   constructor(
     private router: Router,
-    private recetteService: RecetteService
+    private recetteService: RecetteService,
+    private backendService: BackendServiceService
     ){ }
+    
 
   ngOnInit(){
 
@@ -75,17 +83,62 @@ export class MainSectionComponent implements OnInit{
   }
 
   getCommentaires(recetteId: number): void {
-    this.recetteService.getCommentaires(recetteId)
-    .subscribe(commentaires => {
+    this.recetteService.getCommentaires(recetteId).subscribe(commentaires => {
       this.commentairesList = commentaires;
+      console.log('Commentaires récupérés :', this.commentairesList);
 
       // Pour chaque commentaire, récupérez les détails de l'utilisateur
       this.commentairesList.forEach(commentaire => {
-        this.recetteService.getUserDetails(commentaire.idUtilisateur)
-          .subscribe(user => {
-            commentaire.userDetails = user; // Stockez les détails de l'utilisateur dans le commentaire
-          });
+        this.recetteService.getUtilisateurPhotoById(commentaire.idUtilisateur).subscribe(photoUrl => {
+          commentaire.photoUrl = photoUrl;
+          console.log('tgtgtgt :',commentaire.photoUrl) // Stocke l'URL de l'image de l'utilisateur dans chaque commentaire
+        });
+        // Utilisez l'ID de l'utilisateur pour récupérer ses détails
+        this.recetteService.getUtilisateurById(commentaire.idUtilisateur).subscribe(utilisateur => {
+          this.userDetailsMap.set(commentaire.idUtilisateur, utilisateur);  
+          console.log('Informations sur l\'utilisateur :', utilisateur);
+            // Utilisez les informations sur l'utilisateur ici
+            console.log('Clés dans userDetailsMap :', this.userDetailsMap.keys());
+            console.log('ID Utilisateur du commentaire :', commentaire.idUtilisateur);
+            console.log('Pseudo de l\'utilisateur :', this.userDetailsMap.get(commentaire.idUtilisateur)?.photo);
+        });
       });
     });
   }
+
+
+  addComment(newCommentContent: string, recetteId: number): void {
+    // Obtenez l'ID de l'utilisateur connecté à partir du service BackendServiceService
+    const userId = this.backendService.getLoggedInUserId();
+    if (userId) {
+      const newComment = {
+        idUtilisateur: userId,
+        idRecette: recetteId,
+        contenu: newCommentContent,
+        date: new Date()
+      };
+    
+      this.recetteService.addCommentaire(newComment).subscribe({
+        next: (commentaire: any) => {
+          console.log('Commentaire ajouté avec succès :', commentaire);
+          this.getCommentaires(recetteId);
+        },
+        error: error => {
+          console.error('Erreur lors de l\'ajout du commentaire :', error);
+        }
+      });
+    } else {
+      console.error('L\'utilisateur n\'est pas connecté.'); // Gérez le cas où l'utilisateur n'est pas connecté
+    }
+  }
+
+
+  
+
+  onCommentInputChange(event: any): void {
+    this.newCommentContent = event.target.value;
+  }
+  
+  
+  
 }

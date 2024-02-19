@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { UserService } from './user/user.service';
+ 
 
 //import { MenuComponent } from './page-accueil/menu/menu.component';
 
@@ -18,7 +20,6 @@ import { LoginComponent } from './login/login.component';
 //import { FooterComponent } from './page-accueil/footer/footer.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { AjoutComponent } from './ajout/ajout.component';
 
 @NgModule({
