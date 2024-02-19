@@ -30,32 +30,33 @@
     <!-- Fenêtre contextuelle -->
     <div *ngIf="selectedRecette">
         <div id="modal-container">
-            <div id="modal">
+            <div id="modal" style="max-height: 2000px; overflow-y: auto;">
                 <p id="titre-recette">{{ selectedRecette.titre }}</p>
                 <!-- <p id="nom-utilisateur">Publié par {{ selectedRecette.idUtilisateur }}</p> -->
                 <p id="description">Description :  <br/>{{ selectedRecette.description }}</p>
                 <p id="ingredients">Ingrédients :  <br/>{{ selectedRecette.ingredient1 }} {{ selectedRecette.ingredient2 }} {{ selectedRecette.ingredient3 }} {{ selectedRecette.ingredient4 }} {{ selectedRecette.ingredient5 }}</p>
                 
 
-                <div id="commentaires-section">
+                <div id="commentaires-section" style="max-height: 150px; overflow-y: auto;">
                     <p>Commentaires : </p>
                     <div *ngIf="commentairesList.length > 0; else noCommentaires">
                         <div *ngFor="let commentaire of commentairesList">
                             <p> <img width="30" height="30" [src]="'https://shareeat.alwaysdata.net/photoProfil/' + userDetailsMap.get(commentaire.idUtilisateur)?.photo" alt="." style="border: 2px solid black; border-radius: 15px;">
                                 {{ userDetailsMap.get(commentaire.idUtilisateur)?.pseudo }} : {{ commentaire.contenu }}</p>
-                            <div style="height: 0.5cm;"></div>
+                            <div style="height: 0.2cm;"></div>
                         </div>
                     </div>
                     <ng-template #noCommentaires>
                         <p>Aucun commentaire pour cette recette.</p>
                     </ng-template>
 
-                    <form>
-                        <input type="text" (input)="onCommentInputChange($event)" placeholder="Votre commentaire...">
-                        <button type="button" (click)="addComment(newCommentContent, selectedRecette.idRecette)">Ajouter commentaire</button>
-
-                    </form>
+                    
                 </div>
+                <form id="form">
+                    <input type="text" (input)="onCommentInputChange($event)" placeholder="Votre commentaire...">
+                    <button type="button" (click)="addComment(newCommentContent, selectedRecette.idRecette)">Ajouter commentaire</button>
+
+                </form>
 
   
 
