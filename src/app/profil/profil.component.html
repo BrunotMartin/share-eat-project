@@ -6,12 +6,16 @@
   <div id="c2 "class="profile-container">
     <div class="profile">
       <div class="photo-profil">
-        <img [src]="profileImage || 'assets/img/profil.jpg'" alt="Photo de profil" class="profile-picture">
+        <img width="80" height="80" [src]="'https://shareeat.alwaysdata.net/photoProfil/' + profileImage" alt="Photo de profil" class="profile-picture" style="border-radius: 40px;">
       </div>
       <div class="profile-info">
         <h2>{{getPrenomUtilisateurConnecte()}}</h2>
-        <p>{{getPseudoUtilisateurConnecte()}}</p>
+        <p id="pseudo">{{getPseudoUtilisateurConnecte()}}</p>
+        <div id="bio" *ngIf="bioUtilisateur$ | async as bio">
+          <p>{{ bio }}</p>
+        </div>
       </div>
+      
       <div class="button-modif">
         <button class="modify-button" (click)="modifierProfil()">Modifier le profil</button>
       </div>

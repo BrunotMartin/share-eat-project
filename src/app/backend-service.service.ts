@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -110,16 +110,23 @@ export class BackendServiceService {
     return this.httpClient.get(url);
   }
 
-
-  getProfileImage(): Observable<any> {
-    const userId = this.getLoggedInUserId();
-    const url = `${this.API_URL}/utilisateurs/${userId}/photo`;
-    return this.httpClient.get(url, { responseType: 'blob' });
-  }
-
   getUserBio(): Observable<string[]> {
     return this.httpClient.get<string[]>(`${this.API_URL}/utilisateurs/bio`);
   }
+
+
+  getUtilisateurPhotoById(userId: number): Observable<string> {
+    return this.httpClient.get<any>(`${this.API_URL}/idUtilisateurs?idUtilisateur=${userId}`).pipe(
+      map((utilisateur: any) => utilisateur.photo)
+    );
+  }
+
+  getUtilisateurBio(userId: number): Observable<string> {
+    return this.httpClient.get<any>(`${this.API_URL}/idUtilisateurs?idUtilisateur=${userId}`).pipe(
+      map((utilisateur: any) => utilisateur.bio)
+    );
+}
+
   
 
 
