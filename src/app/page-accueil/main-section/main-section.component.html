@@ -41,7 +41,7 @@
                     <p>Commentaires : </p>
                     <div *ngIf="commentairesList.length > 0; else noCommentaires">
                         <div *ngFor="let commentaire of commentairesList">
-                            <p> <img width="30" height="30" [src]="'https://shareeat.alwaysdata.net/photoProfil/' + userDetailsMap.get(commentaire.idUtilisateur)?.photo" alt="." style="border: 2px solid black; border-radius: 15px;">
+                            <p> <img id="photo" width="30" height="30" [src]="'https://shareeat.alwaysdata.net/photoProfil/' + userDetailsMap.get(commentaire.idUtilisateur)?.photo" alt="." style="border: 2px solid black; border-radius: 15px;">
                                 {{ userDetailsMap.get(commentaire.idUtilisateur)?.pseudo }} : {{ commentaire.contenu }}</p>
                             <div style="height: 0.2cm;"></div>
                         </div>
@@ -54,7 +54,7 @@
                 </div>
                 <form id="form">
                     <input type="text" (input)="onCommentInputChange($event)" placeholder="Votre commentaire...">
-                    <button type="button" (click)="addComment(newCommentContent, selectedRecette.idRecette)">Ajouter commentaire</button>
+                    <button class="buttonCom" type="button" (click)="addComment(newCommentContent, selectedRecette.idRecette)">Ajouter</button>
 
                 </form>
 
