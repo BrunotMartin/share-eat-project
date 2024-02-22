@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 
 import { Location } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profil-root',
@@ -18,38 +19,44 @@ export class ProfilComponent implements OnInit {
   prenom = '';
   identifiant = '';
   biographie = '';
-  profileImage: any;
+  
+  bio: any;
+  profileImage: string | undefined;
+  bioUtilisateur$: Observable<string> = new Observable<string>();
   
   constructor(private backendService: BackendServiceService, private userService: UserService, private router: Router, private location : Location ) { }
 
-  loadProfileImage(): void {
-    this.backendService.getProfileImage().subscribe(
-      (imageData) => {
-        // Créer un objet Blob à partir des données binaires
-        const blob = new Blob([imageData], { type: 'image/*' });
   
-        // Convertir le Blob en URL d'image
-        const imageUrl = URL.createObjectURL(blob);
   
-        // Stocker l'URL de l'image de profil dans la variable profileImage
-        this.profileImage = imageUrl;
-      },
-      (error) => {
-        console.error('Erreur lors du chargement de l\'image de profil', error);
-      }
-    );
-  }
 
   ngOnInit(): void {
-    // Initialise les données de l'utilisateur depuis le service
-    const userPrenom = this.userService.getPrenom();
-    const userIdentifiant = this.userService.getIdentifiant();
-    const userBiographie = this.userService.getBiographie();
+    this.loadProfileImage();
 
-    // Vérifie si les valeurs du service ne sont pas null ou undefined avant l'assignation
-    this.prenom = userPrenom ? userPrenom : '';
-    this.identifiant = userIdentifiant ? userIdentifiant : '';
-    this.biographie = userBiographie ? userBiographie : '';
+    const userId = this.backendService.getLoggedInUserId();
+    this.bioUtilisateur$ = this.backendService.getUtilisateurBio(userId ?? 0);
+    // this.bioList$ = this.backendService.getUserBio();
+
+    if (userId) {
+      // Appeler la méthode pour charger la bio lors de l'initialisation
+      // this.loadProfileBio(userId);
+    }
+  }
+
+  loadProfileImage(): void {
+    // Récupérer l'ID de l'utilisateur connecté
+    const userId = this.backendService.getLoggedInUserId();
+    if (userId) {
+      // Appeler la méthode du service pour récupérer l'URL de l'image de profil de l'utilisateur
+      this.backendService.getUtilisateurPhotoById(userId).subscribe(
+        (imageUrl) => {
+          // Stocker l'URL de l'image de profil dans la variable profileImage
+          this.profileImage = imageUrl;
+        },
+        (error) => {
+          console.error('Erreur lors du chargement de l\'image de profil', error);
+        }
+      );
+    }
   }
 
   // Méthode pour récupérer le prénom de l'utilisateur connecté
@@ -69,6 +76,8 @@ export class ProfilComponent implements OnInit {
     // Par exemple, ouvrir une boîte de dialogue/modal pour la modification
     console.log("Modifier le profil");
   }
+
+  
 
   deconnexion() {
     // Appeler la méthode de déconnexion du service backend

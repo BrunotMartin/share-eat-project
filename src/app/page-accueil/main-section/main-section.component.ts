@@ -7,6 +7,9 @@ import { Subscription } from 'rxjs';
 import { BackendServiceService } from 'src/app/backend-service.service';
 import { Utilisateur } from 'src/app/utilisateur';
 import { A_like } from 'src/app/a_like';
+import { BackendServiceService } from 'src/app/backend-service.service';
+
+
 
 @Component({
   selector: 'app-main-section',
@@ -35,6 +38,10 @@ export class MainSectionComponent implements OnInit{
   };
   
   selectedRecette: any;
+  commentairesList: any[] = []; 
+  userDetailsMap: Map<number, any> = new Map<number, any>();
+  newCommentContent = '';
+
   private subscription: Subscription | undefined;
   utilisateur: Utilisateur | undefined;
   idUser: number | undefined;
@@ -44,6 +51,8 @@ export class MainSectionComponent implements OnInit{
 
   openModal(recette: any) {
     this.selectedRecette = recette;
+    this.getCommentaires(recette.idRecette);
+    this.newCommentContent = '';
   }
 
   closeModal() {
@@ -56,6 +65,7 @@ export class MainSectionComponent implements OnInit{
     private recetteService: RecetteService,
     private backendService: BackendServiceService
     ){ }
+    
 
   ngOnInit(){
 
@@ -72,6 +82,13 @@ export class MainSectionComponent implements OnInit{
 
 
 
+
+    this.recetteService.getCommentaires(6)
+      .subscribe(commentaires => {
+        this.commentairesList = commentaires;
+        console.log('Commentaires récupérés pour la recette 6 :', this.commentairesList);
+      });
+    
     this.subscription = this.recetteService.getRecetteList().subscribe({
       next: (recettes: Recette[]) => {
         this.recetteList = recettes.reverse();
@@ -150,6 +167,66 @@ export class MainSectionComponent implements OnInit{
   goToRecette(recette: Recette){
     this.router.navigate(['/recette', recette.idRecette]);
   }
+
+  getCommentaires(recetteId: number): void {
+    this.recetteService.getCommentaires(recetteId).subscribe(commentaires => {
+      this.commentairesList = commentaires;
+      console.log('Commentaires récupérés :', this.commentairesList);
+
+      // Pour chaque commentaire, récupérez les détails de l'utilisateur
+      this.commentairesList.forEach(commentaire => {
+        this.recetteService.getUtilisateurPhotoById(commentaire.idUtilisateur).subscribe(photoUrl => {
+          commentaire.photoUrl = photoUrl;
+          console.log('tgtgtgt :',commentaire.photoUrl) // Stocke l'URL de l'image de l'utilisateur dans chaque commentaire
+        });
+        // Utilisez l'ID de l'utilisateur pour récupérer ses détails
+        this.recetteService.getUtilisateurById(commentaire.idUtilisateur).subscribe(utilisateur => {
+          this.userDetailsMap.set(commentaire.idUtilisateur, utilisateur);  
+          console.log('Informations sur l\'utilisateur :', utilisateur);
+            // Utilisez les informations sur l'utilisateur ici
+            console.log('Clés dans userDetailsMap :', this.userDetailsMap.keys());
+            console.log('ID Utilisateur du commentaire :', commentaire.idUtilisateur);
+            console.log('Pseudo de l\'utilisateur :', this.userDetailsMap.get(commentaire.idUtilisateur)?.photo);
+        });
+      });
+    });
+  }
+
+
+  addComment(newCommentContent: string, recetteId: number): void {
+    // Obtenez l'ID de l'utilisateur connecté à partir du service BackendServiceService
+    const userId = this.backendService.getLoggedInUserId();
+    if (userId) {
+      const newComment = {
+        idUtilisateur: userId,
+        idRecette: recetteId,
+        contenu: newCommentContent,
+        date: new Date()
+      };
+    
+      this.recetteService.addCommentaire(newComment).subscribe({
+        next: (commentaire: any) => {
+          console.log('Commentaire ajouté avec succès :', commentaire);
+          this.getCommentaires(recetteId);
+        },
+        error: error => {
+          console.error('Erreur lors de l\'ajout du commentaire :', error);
+        }
+      });
+    } else {
+      console.error('L\'utilisateur n\'est pas connecté.'); // Gérez le cas où l'utilisateur n'est pas connecté
+    }
+  }
+
+
+  
+
+  onCommentInputChange(event: any): void {
+    this.newCommentContent = event.target.value;
+  }
+  
+  
+  
 }
 
 

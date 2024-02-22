@@ -4,6 +4,8 @@ import { Recette } from './recette';
 
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { BackendServiceService } from '../backend-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +22,9 @@ export class RecetteService {
 
   readonly ENDPOINT_CREATE_RECETTE = "/ajout";
 
-  constructor(private httpClient: HttpClient) {}
+  readonly ENDPOINT_COMMENTAIRES = '/commentaires';
+
+  constructor(private httpClient: HttpClient, private backendService: BackendServiceService) {}
 
 
   getRecetteList(): Observable<Recette[]>{ //: Recette[]
@@ -38,4 +42,29 @@ export class RecetteService {
     const url = `${this.API_URL}${this.ENDPOINT_CREATE_RECETTE}`;
     return this.httpClient.post<Recette>(url, newRecette);
   }
+
+  getCommentaires(recetteId: number): Observable<any> {
+    return this.httpClient.get<any>(`${this.API_URL}${this.ENDPOINT_COMMENTAIRES}?idRecette=${recetteId}`);
+  }
+
+  addCommentaire(newComment: any): Observable<any> {
+    // Récupérez l'ID de l'utilisateur connecté à partir de BackendServiceService
+    const userId = this.backendService.getLoggedInUserId();
+    // Utilisez l'ID de l'utilisateur connecté pour ajouter le commentaire
+    newComment.idUtilisateur = userId;
+    const url = `${this.API_URL}/commentaires`;
+    return this.httpClient.post<any>(url, newComment);
+  }
+  
+
+  getUtilisateurById(userId: number): Observable<any> {
+    return this.httpClient.get<any>(`${this.API_URL}/idUtilisateurs?idUtilisateur=${userId}`);
+  }
+
+  getUtilisateurPhotoById(userId: number): Observable<string> {
+    return this.httpClient.get<any>(`${this.API_URL}/idUtilisateurs?idUtilisateur=${userId}`).pipe(
+      map((utilisateur: any) => utilisateur.photo)
+    );
+  }
+  
 }

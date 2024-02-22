@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { Utilisateur } from './utilisateur';
 import { A_like } from './a_like';
 
@@ -18,6 +18,7 @@ export class BackendServiceService {
   readonly ENDPOINT_LIKE = '/a_like';
   readonly ENDPOINT_GET_RECETTES_LIKES_BY_USER_ID = '/a_like/utilisateur/';
 
+  readonly ENDPOINT_COMMENTAIRES = '/commentaires';
 
   private isAuthenticated = false;
   private loggedInUserId: number | null = null;
@@ -170,12 +171,23 @@ export class BackendServiceService {
     return this.httpClient.get(url);
   }
 
-
-  getProfileImage(): Observable<any> {
-    const userId = this.getLoggedInUserId();
-    const url = `${this.API_URL}/utilisateurs/${userId}/photo`;
-    return this.httpClient.get(url, { responseType: 'blob' });
+  getUserBio(): Observable<string[]> {
+    return this.httpClient.get<string[]>(`${this.API_URL}/utilisateurs/bio`);
   }
+
+
+  getUtilisateurPhotoById(userId: number): Observable<string> {
+    return this.httpClient.get<any>(`${this.API_URL}/idUtilisateurs?idUtilisateur=${userId}`).pipe(
+      map((utilisateur: any) => utilisateur.photo)
+    );
+  }
+
+  getUtilisateurBio(userId: number): Observable<string> {
+    return this.httpClient.get<any>(`${this.API_URL}/idUtilisateurs?idUtilisateur=${userId}`).pipe(
+      map((utilisateur: any) => utilisateur.bio)
+    );
+}
+
   
 
 
@@ -187,3 +199,5 @@ export class BackendServiceService {
     return this.httpClient.post<any>(this.API_URL + this.ENDPOINT_DECONNEXION, {}, { headers });
   }
 }
+
+
