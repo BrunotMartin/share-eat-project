@@ -64,12 +64,26 @@ hr{
 #like-container{
     background-repeat: no-repeat;
     background-size: cover;
-    height: 40px;
-    width: 45px;
+    
+    height: 30px;
+    width: 35px;
+    
+    //height: 40px;
+    //width: 45px;
     //background-image: url("../../../assets/images/heart-icon-empty.png");
     position: absolute;
-    bottom: 15px;
+    bottom: 10px;
     left: 15px;
+}
+
+#coeur{
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+}
+
+.fond-rouge {
+    background-color: red;
 }
 
 

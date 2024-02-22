@@ -21,7 +21,9 @@
             <div (click)="openModal(recette)" id="recette-container" [style.backgroundImage]="'url(https://shareeat.alwaysdata.net/photoRecette/' + recette.imageRecette + ')'" style="background-size: cover;">                
                 <p id="titre-recette">{{recette.titre}}</p>
             
-                <div id="like-container"></div>
+                <div id="like-container">
+                    <button id="coeur" (click)="createLikeOrDeleteLike($event, idUser!, recette.idRecette!)" [ngClass]="{ 'fond-rouge': idRecettes.includes(recette.idRecette!) }">♥</button>
+                </div>
                 <div id="note-container">⭐⭐⭐</div>
             </div>
         </div>

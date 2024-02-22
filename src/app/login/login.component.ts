@@ -21,6 +21,8 @@ export class LoginComponent {
         // Stocker l'ID de l'utilisateur connecté
         const loggedInUserId = response.idUtilisateur;
         this.backendService.setLoggedInUserId(loggedInUserId);
+        this.backendService.setLoggedInUserIdSeb(loggedInUserId);
+        
         console.log('ID utilisateur connecté:', loggedInUserId);
 
         this.router.navigate(['/accueil']);

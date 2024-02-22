@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { Utilisateur } from './utilisateur';
+import { A_like } from './a_like';
 
 @Injectable({
   providedIn: 'root'
@@ -14,17 +15,28 @@ export class BackendServiceService {
   readonly ENDPOINT_DECONNEXION = '/deconnexion';
   readonly ENDPOINT_RECHERCHE_UTILISATEUR = '/pseudo';
   readonly ENDPOINT_UTILISATEUR_BY_ID = '/utilisateur/';
+  readonly ENDPOINT_LIKE = '/a_like';
+  readonly ENDPOINT_GET_RECETTES_LIKES_BY_USER_ID = '/a_like/utilisateur/';
 
 
   private isAuthenticated = false;
   private loggedInUserId: number | null = null;
   private loggedInUserPrenom: string | null = null;
   private loggedInUserPseudo: string | null = null;
-  
+  loggedInUserIdSeb: number | undefined;
 
   
 
   constructor(private httpClient : HttpClient) {  }
+
+  getLoggedInUserIdSeb(): number | undefined {
+    return this.loggedInUserIdSeb;
+  }
+
+
+  setLoggedInUserIdSeb(userId: number | undefined): void {
+    this.loggedInUserIdSeb = userId;
+  }
 
   // Méthode pour vérifier si l'utilisateur est connecté
   isLoggedIn(): boolean {
@@ -94,6 +106,30 @@ export class BackendServiceService {
     const url = `${this.API_URL}${this.ENDPOINT_UTILISATEUR_BY_ID}${userId}`;
     return this.httpClient.get<Utilisateur>(url);
   }
+
+  getRecettesByUserId(userId: number): Observable<A_like[]> {
+    const url = `${this.API_URL}${this.ENDPOINT_GET_RECETTES_LIKES_BY_USER_ID}${userId}`;
+    return this.httpClient.get<A_like[]>(url);
+  }
+  
+  deleteLike(userId: number, idRecette: number): Observable<A_like[]> {
+    const url = `${this.API_URL}${this.ENDPOINT_LIKE}/${userId}/${idRecette}`;
+    return this.httpClient.delete<A_like[]>(url);
+  }
+
+  createLikeRecette(userId: number | undefined, recetteId: number | undefined): Observable<A_like> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    const newLike: A_like = {
+      idUtilisateur: userId,
+      idRecette: recetteId
+    };
+
+    return this.httpClient.post<A_like>(this.API_URL + this.ENDPOINT_LIKE, newLike, { headers });
+  }
+
 
 
 
