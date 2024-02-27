@@ -7,7 +7,6 @@ import { Subscription } from 'rxjs';
 import { BackendServiceService } from 'src/app/backend-service.service';
 import { Utilisateur } from 'src/app/utilisateur';
 import { A_like } from 'src/app/a_like';
-import { BackendServiceService } from 'src/app/backend-service.service';
 
 
 
