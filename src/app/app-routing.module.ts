@@ -11,6 +11,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 
 import { AjoutComponent } from './ajout/ajout.component';
 import { AccueilComponent } from './page-accueil/accueil/accueil.component';
+import { RechercheComponent } from './recherche/recherche.component';
 
 const routes: Routes = [
   {path: 'accueil', component: AccueilComponent, canActivate: [AuthGuard]},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'inscription', component: InscriptionComponent },
   {path: 'ajout', component: AjoutComponent },
+  {path: 'recherche', component: RechercheComponent},
   {path: '', redirectTo: '/login', pathMatch:'full'},
   {path: '**', component: PageNotFoundComponent}
 

@@ -186,7 +186,13 @@ export class BackendServiceService {
     return this.httpClient.get<any>(`${this.API_URL}/idUtilisateurs?idUtilisateur=${userId}`).pipe(
       map((utilisateur: any) => utilisateur.bio)
     );
-}
+  }
+
+  searchRecipeByName(recipeName: string): Observable<any> {
+    const url = `${this.API_URL}/recherche/recette?nom=${recipeName}`;
+    return this.httpClient.get(url);
+  }
+  
 
   
 

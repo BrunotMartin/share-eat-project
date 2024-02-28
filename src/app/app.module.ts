@@ -21,9 +21,10 @@ import { LoginComponent } from './login/login.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { CommonModule } from '@angular/common';
 import { AjoutComponent } from './ajout/ajout.component';
+import { RechercheComponent } from './recherche/recherche.component';
 
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent, ProfilComponent, MessageComponent, LoginComponent, InscriptionComponent, AjoutComponent],
+  declarations: [AppComponent, PageNotFoundComponent, ProfilComponent, MessageComponent, LoginComponent, InscriptionComponent, AjoutComponent, RechercheComponent],
   imports: [BrowserModule, PageAccueilModule, AppRoutingModule, HttpClientModule, CommonModule, FormsModule],
   providers: [UserService],
   bootstrap: [AppComponent],
