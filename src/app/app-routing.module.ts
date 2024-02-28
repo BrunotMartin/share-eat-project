@@ -11,6 +11,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 
 import { AjoutComponent } from './ajout/ajout.component';
 import { AccueilComponent } from './page-accueil/accueil/accueil.component';
+import { RechercheComponent } from './recherche/recherche.component';
 import { FavorisComponent } from './favoris/favoris.component';
 import { GallerieComponent } from './gallerie/gallerie.component';
 
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'inscription', component: InscriptionComponent },
   {path: 'ajout', component: AjoutComponent },
+  {path: 'recherche', component: RechercheComponent},
   {path: '', redirectTo: '/login', pathMatch:'full'},
   {path: '**', component: PageNotFoundComponent}
 

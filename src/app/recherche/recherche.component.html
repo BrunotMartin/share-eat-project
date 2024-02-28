@@ -1,0 +1,86 @@
+<div id="grid-container">
+    <app-menu id="c1"></app-menu>
+    <div id="c2" class="discussion-list">
+        <!-- Barre de recherche pour les discussions -->
+        <div>
+            <label for="searchInput">Chercher un plat ou une personne:</label>
+            <input id="searchInput" [(ngModel)]="searchTerm" />
+            <button (click)="search()">Search</button>
+        </div>
+
+        <div *ngIf="userData">
+            <h2>User Details</h2>
+            <img id="photo" width="30" height="30" [src]="'https://shareeat.alwaysdata.net/photoProfil/' + userData.photo" alt="." style="border: 2px solid black; border-radius: 15px;">
+            <p>Pseudo: {{ userData.pseudo }}</p>
+            <p>Prénom: {{ userData.prenom }}</p>
+            <p>Nom: {{ userData.nom }}</p>
+            <!-- Add more details as needed -->
+        </div>
+        
+    </div>
+    <div id="c3" class="conversation">
+        <div *ngIf="recipeData && recipeData.length > 0">
+            <h2>Résultats de la recherche de recettes :</h2>
+            <!-- <ul> -->
+                <div *ngFor="let recette of recipeData | paginate: { itemsPerPage: pageSize, currentPage: p }">
+                    <div (click)="openModal(recette)" id="recette-container" [style.backgroundImage]="'url(https://shareeat.alwaysdata.net/photoRecette/' + recette.imageRecette + ')'" style="background-size: cover;">                
+                        <p id="titre-recette">{{recette.titre}}</p>
+                    
+                        <div id="like-container">
+                            <button id="coeur" (click)="createLikeOrDeleteLike($event, idUser!, recette.idRecette!)" [ngClass]="{ 'fond-rouge': idRecettes.includes(recette.idRecette!) }">♥</button>
+                        </div>
+                        <div id="note-container">⭐⭐⭐</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fenêtre contextuelle -->
+            <div *ngIf="selectedRecette">
+                <div id="modal-container">
+                    <div id="modal" style="max-height: 2000px; overflow-y: auto;">
+                        <p id="titre-recette">{{ selectedRecette.titre }}</p>
+                        <!-- <p id="nom-utilisateur">Publié par {{ selectedRecette.idUtilisateur }}</p> -->
+                        <p id="description">Description :  <br/>{{ selectedRecette.description }}</p>
+                        <p id="ingredients">Ingrédients :  <br/>{{ selectedRecette.ingredient1 }} {{ selectedRecette.ingredient2 }} {{ selectedRecette.ingredient3 }} {{ selectedRecette.ingredient4 }} {{ selectedRecette.ingredient5 }}</p>
+                        
+        
+                        <div id="commentaires-section" style="max-height: 150px; overflow-y: auto;">
+                            <p>Commentaires : </p>
+                            <div *ngIf="commentairesList.length > 0; else noCommentaires">
+                                <div *ngFor="let commentaire of commentairesList">
+                                    <p> <img id="photo" width="30" height="30" [src]="'https://shareeat.alwaysdata.net/photoProfil/' + userDetailsMap.get(commentaire.idUtilisateur)?.photo" alt="." style="border: 2px solid black; border-radius: 15px;">
+                                        {{ userDetailsMap.get(commentaire.idUtilisateur)?.pseudo }} : {{ commentaire.contenu }}</p>
+                                    <div style="height: 0.2cm;"></div>
+                                </div>
+                            </div>
+                            <ng-template #noCommentaires>
+                                <p>Aucun commentaire pour cette recette.</p>
+                            </ng-template>
+        
+                            
+                        </div>
+                        <form id="form">
+                            <input type="text" (input)="onCommentInputChange($event)" placeholder="Votre commentaire...">
+                            <button class="buttonCom" type="button" (click)="addComment(newCommentContent, selectedRecette.idRecette)">Ajouter</button>
+        
+                        </form>
+        
+          
+        
+                        <button id="fermer" (click)="closeModal()">×</button>
+                        <button id="en-savoir-plus" (click)="goToRecette(selectedRecette)">En savoir plus →</button>
+                    </div>
+                </div>
+            <!-- </ul> -->
+        </div>
+        <div *ngIf="!recipeData || recipeData.length === 0">
+            <p>Aucune recette trouvée pour le terme de recherche "{{ searchTerm }}"</p>
+        </div>
+            
+        
+    </div>
+
+    
+</div>
+
+<app-footer></app-footer>
