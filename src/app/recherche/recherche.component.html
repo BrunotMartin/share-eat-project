@@ -25,7 +25,9 @@
               <li *ngFor="let recipe of recipeData">
                 <h3>{{ recipe.titre }}</h3>
                 <p>Description : {{ recipe.description }}</p>
+                <a [routerLink]="['/recette', recipe.idRecette]">
                     <img class="recipe-thumbnail" width="160" height="160" [src]="'https://shareeat.alwaysdata.net/photoRecette/' + recipe.imageRecette" alt="Photo de la recette" style="border: 2px solid black; border-radius: 15px;">
+                </a>
                     <!-- Autres détails de la recette à afficher -->
               </li>
             </ul>
