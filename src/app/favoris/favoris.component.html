@@ -1,0 +1,94 @@
+<div id="grille">
+    
+    <app-menu id="c1"></app-menu>    
+    <app-footer id="c3"></app-footer>
+    
+    <div id="c2">
+        <div id="main-section">
+        
+            <div id="titre">
+                <p>Les recettes que vous avez aimées</p>
+    
+                <hr>
+    
+                <hr id="hr2">
+            </div>
+            
+            <div id="recettes">
+                <!--Faire la boucle pour mettre le bon nombre de composant recette-->
+                <!-- <app-recette></app-recette>
+                <app-recette></app-recette>
+                <app-recette></app-recette>
+                <app-recette></app-recette>
+                <app-recette></app-recette>
+                <app-recette></app-recette>
+                <app-recette></app-recette> -->
+                <div *ngFor="let recette of recetteList | paginate: { itemsPerPage: pageSize, currentPage: p }">
+                    <div *ngIf="recette.idRecette !== undefined && idRecettes.includes(recette.idRecette)" (click)="openModal(recette)" id="recette-container" [style.backgroundImage]="'url(https://shareeat.alwaysdata.net/photoRecette/' + recette.imageRecette + ')'" style="background-size: cover;">
+                        <p id="titre-recette">{{recette.titre}}</p>
+                
+                        <div id="like-container">
+                            <button id="coeur" (click)="createLikeOrDeleteLike($event, idUser!, recette.idRecette!)" [ngClass]="{ 'fond-rouge': idRecettes.includes(recette.idRecette!) }">♥</button>
+                        </div>
+                        <div id="note-container">⭐⭐⭐</div>
+                    </div>
+                </div>
+                
+            
+            <!-- Fenêtre contextuelle -->
+            <div *ngIf="selectedRecette">
+                <div id="modal-container">
+                    <div id="modal" style="max-height: 2000px; overflow-y: auto;">
+                        <p id="titre-recette">{{ selectedRecette.titre }}</p>
+                        <!-- <p id="nom-utilisateur">Publié par {{ selectedRecette.idUtilisateur }}</p> -->
+                        <p id="description">Description :  <br/>{{ selectedRecette.description }}</p>
+                        <p id="ingredients">Ingrédients :  <br/>{{ selectedRecette.ingredient1 }} {{ selectedRecette.ingredient2 }} {{ selectedRecette.ingredient3 }} {{ selectedRecette.ingredient4 }} {{ selectedRecette.ingredient5 }}</p>
+                        
+    
+                        <div id="commentaires-section" style="max-height: 150px; overflow-y: auto;">
+                            <p>Commentaires : </p>
+                            <div *ngIf="commentairesList.length > 0; else noCommentaires">
+                                <div *ngFor="let commentaire of commentairesList">
+                                    <p> <img id="photo" width="30" height="30" [src]="'https://shareeat.alwaysdata.net/photoProfil/' + userDetailsMap.get(commentaire.idUtilisateur)?.photo" alt="." style="border: 2px solid black; border-radius: 15px;">
+                                        {{ userDetailsMap.get(commentaire.idUtilisateur)?.pseudo }} : {{ commentaire.contenu }}</p>
+                                    <div style="height: 0.2cm;"></div>
+                                </div>
+                            </div>
+                            <ng-template #noCommentaires>
+                                <p>Aucun commentaire pour cette recette.</p>
+                            </ng-template>
+    
+                            
+                        </div>
+                        <form id="form">
+                            <input type="text" (input)="onCommentInputChange($event)" placeholder="Votre commentaire...">
+                            <button class="buttonCom" type="button" (click)="addComment(newCommentContent, selectedRecette.idRecette)">Ajouter</button>
+    
+                        </form>
+    
+        
+    
+                        <button id="fermer" (click)="closeModal()">×</button>
+                        <button id="en-savoir-plus" (click)="goToRecette(selectedRecette)">En savoir plus →</button>
+                    </div>
+                </div>
+    
+            </div>
+    
+            <div id="pagination-container">
+                <pagination-controls (pageChange)="p = $event" 
+                previousLabel="Précédent"
+                nextLabel="Suivant"
+                screenReaderPaginationLabel="Pagination"
+                screenReaderPageLabel="page"
+                screenReaderCurrentLabel="Vous êtes sur la page">
+                </pagination-controls>
+            </div>
+    
+        </div>
+    
+    </div>
+    
+    
+</div>
+

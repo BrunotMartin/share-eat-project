@@ -11,11 +11,15 @@ import { InscriptionComponent } from './inscription/inscription.component';
 
 import { AjoutComponent } from './ajout/ajout.component';
 import { AccueilComponent } from './page-accueil/accueil/accueil.component';
+import { FavorisComponent } from './favoris/favoris.component';
+import { GallerieComponent } from './gallerie/gallerie.component';
 
 const routes: Routes = [
   {path: 'accueil', component: AccueilComponent, canActivate: [AuthGuard]},
   {path: 'profil', component: ProfilComponent},
   {path: 'message', component: MessageComponent},
+  {path: 'favoris', component: FavorisComponent},
+  {path: 'gallerie', component: GallerieComponent},
   {path: 'login', component: LoginComponent},
   {path: 'inscription', component: InscriptionComponent },
   {path: 'ajout', component: AjoutComponent },

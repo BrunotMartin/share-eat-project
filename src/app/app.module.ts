@@ -21,10 +21,13 @@ import { LoginComponent } from './login/login.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { CommonModule } from '@angular/common';
 import { AjoutComponent } from './ajout/ajout.component';
+import { FavorisComponent } from './favoris/favoris.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { GallerieComponent } from './gallerie/gallerie.component';
 
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent, ProfilComponent, MessageComponent, LoginComponent, InscriptionComponent, AjoutComponent],
-  imports: [BrowserModule, PageAccueilModule, AppRoutingModule, HttpClientModule, CommonModule, FormsModule],
+  declarations: [AppComponent, PageNotFoundComponent, ProfilComponent, MessageComponent, LoginComponent, InscriptionComponent, AjoutComponent, FavorisComponent, GallerieComponent],
+  imports: [BrowserModule, PageAccueilModule, AppRoutingModule, HttpClientModule, CommonModule, FormsModule, NgxPaginationModule],
   providers: [UserService],
   bootstrap: [AppComponent],
 })

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 //import { RECETTES } from '../mock-recette';
-import { Recette } from '../recette';
-import { RecetteService } from '../recette.service';
+import { Recette } from '../page-accueil/recette';
+import { RecetteService } from '../page-accueil/recette.service';
 import { Subscription } from 'rxjs';
 import { BackendServiceService } from 'src/app/backend-service.service';
 import { Utilisateur } from 'src/app/utilisateur';
@@ -11,11 +11,11 @@ import { A_like } from 'src/app/a_like';
 
 
 @Component({
-  selector: 'app-main-section',
-  templateUrl: './main-section.component.html',
-  styleUrls: ['./main-section.component.scss']
+  selector: 'app-favoris',
+  templateUrl: './favoris.component.html',
+  styleUrls: ['./favoris.component.scss']
 })
-export class MainSectionComponent implements OnInit{
+export class FavorisComponent {
 
   recetteList: Recette[] = []; // = RECETTES;
   
