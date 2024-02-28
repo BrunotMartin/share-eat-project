@@ -19,6 +19,9 @@ export class RechercheComponent {
   
 
   search(): void {
+
+    this.userData = null;
+    this.recipeData = null;
     // Vérifier si la recherche concerne un utilisateur ou une recette
     if (this.searchTerm) {
       console.log('Search term:', this.searchTerm);
@@ -36,7 +39,7 @@ export class RechercheComponent {
               (userData) => {
                 console.log('User data:', userData); 
                 this.userData = userData;
-                this.loadMessages();
+                
               },
               (error) => {
                 console.error("Error searching for user:", error);

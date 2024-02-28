@@ -3,35 +3,41 @@
     <div id="c2" class="discussion-list">
         <!-- Barre de recherche pour les discussions -->
         <div>
-            <label for="searchInput">Search User by Pseudo:</label>
+            <label for="searchInput">Chercher un plat ou une personne:</label>
             <input id="searchInput" [(ngModel)]="searchTerm" />
             <button (click)="search()">Search</button>
         </div>
 
         <div *ngIf="userData">
             <h2>User Details</h2>
-            <p>ID: {{ userData.idUtilisateur }}</p>
+            <img id="photo" width="30" height="30" [src]="'https://shareeat.alwaysdata.net/photoProfil/' + userData.photo" alt="." style="border: 2px solid black; border-radius: 15px;">
             <p>Pseudo: {{ userData.pseudo }}</p>
             <p>Prénom: {{ userData.prenom }}</p>
             <p>Nom: {{ userData.nom }}</p>
-            <p>Email: {{ userData.mail }}</p>
             <!-- Add more details as needed -->
         </div>
         
     </div>
     <div id="c3" class="conversation">
-        <!-- Zone de saisie des messages -->
-        <div class="message-input">
-            <input type="text" [(ngModel)]="messageToSend" placeholder="Tapez votre message ici...">
-            <button (click)="sendMessage()" [disabled]="!messageToSend.trim()">Envoyer</button>
+        <div *ngIf="recipeData && recipeData.length > 0">
+            <h2>Résultats de la recherche de recettes :</h2>
+            <ul>
+              <li *ngFor="let recipe of recipeData">
+                <h3>{{ recipe.titre }}</h3>
+                <p>Description : {{ recipe.description }}</p>
+                    <img class="recipe-thumbnail" width="160" height="160" [src]="'https://shareeat.alwaysdata.net/photoRecette/' + recipe.imageRecette" alt="Photo de la recette" style="border: 2px solid black; border-radius: 15px;">
+                    <!-- Autres détails de la recette à afficher -->
+              </li>
+            </ul>
         </div>
-        <div *ngFor="let message of messages" class="message">
-            <p><strong>{{ message.idSender }}:</strong> {{ message.message }} <span class="timestamp">{{ message.heure | date: 'short' }}</span></p>
-          </div>
-          
-          
+        <div *ngIf="!recipeData || recipeData.length === 0">
+            <p>Aucune recette trouvée pour le terme de recherche "{{ searchTerm }}"</p>
+        </div>
+            
         
     </div>
+
+    
 </div>
 
 <app-footer></app-footer>
